@@ -10,6 +10,7 @@
     "deploy:mainnet": "hardhat run scripts/deploy.js --network vechain_mainnet",
     "verify:testnet": "hardhat run scripts/verify.js --network vechain_testnet",
     "verify:mainnet": "hardhat run scripts/verify.js --network vechain_mainnet",
+    "check-verification": "hardhat run scripts/check-verification.js --network vechain_testnet",
     "upgrade": "hardhat run scripts/upgrade.js",
     "test-deployment": "hardhat run scripts/test-deployment.js",
     "get-wallet": "hardhat run scripts/get-wallet-info.js",
