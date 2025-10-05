@@ -1,186 +1,220 @@
 @import "tailwindcss";
-@import "../styles/vechain-utilities.css";
 
-/* shadcn/ui CSS variables */
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 84% 4.9%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96%;
-    --accent-foreground: 222.2 84% 4.9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 84% 4.9%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 94.1%;
-  }
-}
-
-/* Custom CSS variables for theming */
 :root {
-  --color-primary: #667eea;
-  --color-secondary: #764ba2;
-  --color-background: #ffffff;
-  --color-surface: #f8fafc;
-  --color-text: #1a202c;
-  --color-text-muted: #64748b;
-  --color-border: #e2e8f0;
-  --color-shadow: rgba(0, 0, 0, 0.1);
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --primary: 221.2 83.2% 53.3%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222.2 84% 4.9%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96%;
+  --accent-foreground: 222.2 84% 4.9%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 221.2 83.2% 53.3%;
+  --radius: 0.5rem;
+  --sidebar: 220 13% 91%;
+  --sidebar-foreground: 220 9% 46%;
+  --sidebar-border: 214.3 31.8% 91.4%;
+  --sidebar-ring: 221.2 83.2% 53.3%;
+  --brand: 221 83% 53%;
+  --node-bg: #fff;
 }
 
-[data-theme="dark"] {
-  --color-background: #0f172a;
-  --color-surface: #1e293b;
-  --color-text: #f8fafc;
-  --color-text-muted: #94a3b8;
-  --color-border: #334155;
-  --color-shadow: rgba(0, 0, 0, 0.3);
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222.2 84% 4.9%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 217.2 91.2% 59.8%;
+  --primary-foreground: 222.2 84% 4.9%;
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 224.3 76.3% 94.1%;
+  --sidebar: 217.2 32.6% 17.5%;
+  --sidebar-foreground: 215 20.2% 65.1%;
+  --sidebar-border: 217.2 32.6% 17.5%;
+  --sidebar-ring: 224.3 76.3% 94.1%;
+  --brand: 217.2 91.2% 59.8%;
+  --node-bg: #112240;
 }
 
-/* Base styles */
 * {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
+  border-color: hsl(var(--border));
 }
 
 body {
-  @apply bg-background text-text font-sans antialiased;
-  margin: 0;
-  min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
+/* Accessible focus styles */
+:where(a, button, input, select, textarea, [role="button"]):focus { outline: none; }
+:where(a, button, input, select, textarea, [role="button"]):focus-visible {
+  outline: 3px solid #1d4ed8; /* blue-700 */
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(29, 78, 216, 0.2);
+}
+
+/* Skip link utility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #1d4ed8;
+  color: white;
+  padding: 8px 12px;
+  z-index: 50;
+  border-radius: 0 0 4px 0;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+/* React Flow specific styles */
+.react-flow__node {
+  font-family: inherit;
+}
+
+.react-flow__edge {
+  stroke-width: 2;
+}
+
+.react-flow__handle {
+  border: 2px solid #fff;
+  background: #555;
   width: 8px;
+  height: 8px;
 }
 
-::-webkit-scrollbar-track {
-  @apply bg-gray-100 dark:bg-gray-800;
+.react-flow__handle.react-flow__handle-top {
+  top: -4px;
 }
 
-::-webkit-scrollbar-thumb {
-  @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+.react-flow__handle.react-flow__handle-bottom {
+  bottom: -4px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-400 dark:bg-gray-500;
+.react-flow__handle.react-flow__handle-left {
+  left: -4px;
 }
 
-/* Focus styles */
-*:focus-visible {
-  @apply outline-none ring-2 ring-blue-500 ring-offset-2 ring-offset-background;
+.react-flow__handle.react-flow__handle-right {
+  right: -4px;
 }
 
-/* Selection styles */
-::selection {
-  @apply bg-blue-100 text-blue-900;
+/* Add consistent rounded corners to common components */
+.rounded-card {
+  border-radius: 1.5rem;
+  overflow: hidden;
 }
 
-[data-theme="dark"] ::selection {
-  @apply bg-blue-900 text-blue-100;
-}
-
-/* Custom utility classes */
-.gradient-text {
-  @apply bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent;
-}
-
-.glass-effect {
-  @apply bg-white/10 backdrop-blur-md border border-white/20;
-}
-
-[data-theme="dark"] .glass-effect {
-  @apply bg-black/20 border-white/10;
-}
-
-.wallet-card {
-  @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-xl;
-}
-
-[data-theme="dark"] .wallet-card {
-  @apply bg-black/20 border-white/5;
-}
-
-/* Animation utilities */
-.animate-fade-in {
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-.animate-slide-up {
-  animation: slideUp 0.3s ease-out;
-}
-
-.animate-scale-in {
-  animation: scaleIn 0.2s ease-out;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideUp {
-  from { 
-    transform: translateY(10px); 
-    opacity: 0; 
-  }
-  to { 
-    transform: translateY(0); 
-    opacity: 1; 
+@keyframes scroll {
+  to {
+    transform: translate(calc(-50% - 0.5rem));
   }
 }
 
-@keyframes scaleIn {
-  from { 
-    transform: scale(0.95); 
-    opacity: 0; 
-  }
-  to { 
-    transform: scale(1); 
-    opacity: 1; 
+.animate-scroll {
+  animation: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+}
+
+/* Mobile-first container styles */
+.container-fluid {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+}
+
+.container {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+}
+
+/* Responsive breakpoints */
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
   }
 }
 
-/* Print styles */
-@media print {
-  * {
-    @apply text-black bg-white;
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
   }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1440px;
+  }
+}
+
+/* React Flow theme styles */
+.react-flow.react-flow-light-theme {
+  background-color: oklch(0.98 0 0);
+}
+
+.react-flow.react-flow-light-theme .react-flow__node {
+  background-color: var(--node-bg);
+  color: oklch(0.11 0.02 255);
+  border: 1px solid oklch(0.91 0.03 235);
+}
+
+.react-flow.react-flow-light-theme .react-flow__edge path {
+  stroke: oklch(0.5 0.05 240);
+}
+
+.react-flow.react-flow-light-theme .react-flow__background {
+  background-color: transparent;
+}
+
+/* Dark theme styles */
+.react-flow.react-flow-dark-theme {
+  background-color: oklch(0.13 0.02 255);
+}
+
+.react-flow.react-flow-dark-theme .react-flow__node {
+  background-color: var(--node-bg);
+  color: oklch(0.97 0.01 235);
+  border: 1px solid oklch(0.33 0.05 250);
+}
+
+.react-flow.react-flow-dark-theme .react-flow__edge path {
+  stroke: oklch(0.65 0.05 240);
+}
+
+.react-flow.react-flow-dark-theme .react-flow__background {
+  background-color: transparent;
 }
