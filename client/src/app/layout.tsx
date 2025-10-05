@@ -20,6 +20,7 @@ import { HeaderPlaceholder } from '../components/HeaderPlaceholder';
 import { HydrationBoundary } from '../components/HydrationBoundary';
 import { ServiceWorkerRegistration } from '../components/ServiceWorkerRegistration';
 import { ThemeProvider } from '../components/theme-provider';
+import { ToastManager } from '../components/ui/toast-notification';
 
 const VechainKitProviderWrapper = dynamic(
 	async () =>
@@ -82,7 +83,7 @@ export default function RootLayout({
 					}}
 				/>
 			</head>
-			<body suppressHydrationWarning={true} className="h-screen overflow-hidden bg-background text-text">
+			<body suppressHydrationWarning={true} className="min-h-screen bg-background text-text">
 				{/* Theme Provider */}
 				<ThemeProvider
 					attribute="class"
@@ -141,7 +142,7 @@ export default function RootLayout({
 												{/* Header placeholder */}
 												<HeaderPlaceholder />
 												{/* Main Content */}
-												<Box pt={16}>{children}</Box>
+												<Box>{children}</Box>
 											</>
 										}
 									>
@@ -152,7 +153,7 @@ export default function RootLayout({
 													{/* Header */}
 													<Header />
 													{/* Main Content */}
-													<Box pt={16}>{children}</Box>
+													<Box>{children}</Box>
 												</>
 											}
 										>
@@ -171,7 +172,9 @@ export default function RootLayout({
 													{/* Header */}
 													<Header />
 													{/* Main Content */}
-													<Box pt={16}>{children}</Box>
+													<Box>{children}</Box>
+													{/* Toast Notifications */}
+													<ToastManager />
 												</Suspense>
 											</VechainKitProviderWrapper>
 										</VeChainKitErrorBoundary>

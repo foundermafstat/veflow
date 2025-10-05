@@ -1,7 +1,7 @@
 import type { Edge, Connection } from "@xyflow/react"
 import type { CustomNode } from "./node.types"
 
-export type ActivePanel = "available-nodes" | "node-properties" | "simulation" | "variables" | "telegram"
+export type ActivePanel = "available-nodes" | "node-properties" | "simulation" | "variables" | "telegram" | "blueprints"
 
 // Flow execution status types
 export type FlowExecutionStatus = 'pending' | 'running' | 'completed' | 'failed'

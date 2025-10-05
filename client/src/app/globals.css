@@ -231,12 +231,10 @@ body {
 
 html {
   height: 100%;
-  overflow: hidden;
 }
 
 body {
-  height: 100%;
-  overflow: hidden;
+  min-height: 100%;
   margin: 0;
   padding: 0;
 }
@@ -374,4 +372,166 @@ button:active {
   100% {
     background-position: 200% 0;
   }
+}
+
+/* Custom Heading Styles */
+.hero-title {
+  font-size: 4rem !important;
+  font-weight: 900 !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.02em !important;
+}
+
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 6rem !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-title {
+    font-size: 8rem !important;
+  }
+}
+
+.hero-subtitle {
+  font-size: 2.5rem !important;
+  font-weight: 900 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.01em !important;
+}
+
+@media (min-width: 768px) {
+  .hero-subtitle {
+    font-size: 4rem !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-subtitle {
+    font-size: 5rem !important;
+  }
+}
+
+.section-title {
+  font-size: 3rem !important;
+  font-weight: 900 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.02em !important;
+}
+
+@media (min-width: 768px) {
+  .section-title {
+    font-size: 4rem !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-title {
+    font-size: 5rem !important;
+  }
+}
+
+.subsection-title {
+  font-size: 2.5rem !important;
+  font-weight: 900 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.01em !important;
+}
+
+@media (min-width: 768px) {
+  .subsection-title {
+    font-size: 3rem !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .subsection-title {
+    font-size: 4rem !important;
+  }
+}
+
+.card-title {
+  font-size: 1.75rem !important;
+  font-weight: 900 !important;
+  line-height: 1.3 !important;
+  letter-spacing: -0.01em !important;
+}
+
+@media (min-width: 768px) {
+  .card-title {
+    font-size: 2rem !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card-title {
+    font-size: 2.25rem !important;
+  }
+}
+
+.card-subtitle {
+  font-size: 1.5rem !important;
+  font-weight: 900 !important;
+  line-height: 1.3 !important;
+  letter-spacing: -0.01em !important;
+}
+
+@media (min-width: 768px) {
+  .card-subtitle {
+    font-size: 1.75rem !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card-subtitle {
+    font-size: 2rem !important;
+  }
+}
+
+.feature-title {
+  font-size: 1.5rem !important;
+  font-weight: 900 !important;
+  line-height: 1.3 !important;
+  letter-spacing: -0.01em !important;
+}
+
+@media (min-width: 768px) {
+  .feature-title {
+    font-size: 1.75rem !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .feature-title {
+    font-size: 2rem !important;
+  }
+}
+
+.cta-title {
+  font-size: 3rem !important;
+  font-weight: 900 !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.02em !important;
+}
+
+@media (min-width: 768px) {
+  .cta-title {
+    font-size: 4rem !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cta-title {
+    font-size: 6rem !important;
+  }
+}
+
+/* Force font weights */
+.font-black-force {
+  font-weight: 900 !important;
+}
+
+.font-bold-force {
+  font-weight: 700 !important;
 }

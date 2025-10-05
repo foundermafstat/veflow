@@ -1,7 +1,7 @@
 "use client"
 
 import { memo } from "react"
-import { Layers, LayoutGrid, type LucideIcon, PanelLeft, PanelLeftClose, Play, Variable, MessageCircle, X } from "lucide-react"
+import { Layers, LayoutGrid, type LucideIcon, PanelLeft, PanelLeftClose, Play, Variable, MessageCircle, X, FileText } from "lucide-react"
 import SidebarButtonItem from "./sidebar-button"
 import { Separator } from "../ui/separator"
 import { cn } from "@/lib/utils"
@@ -17,6 +17,7 @@ import AvailableNodesPanel from "./sidebar-panels/available-nodes-panel"
 import VariablesPanel from "./sidebar-panels/variables-panel"
 import SimulationPanel from "./sidebar-panels/simulation-panel"
 import TelegramPanel from "./sidebar-panels/telegram-panel"
+import BlueprintPanel from "../flow/BlueprintPanel"
 
 const getMenuIcon = (panel: ActivePanel): LucideIcon => {
   switch (panel) {
@@ -30,6 +31,8 @@ const getMenuIcon = (panel: ActivePanel): LucideIcon => {
       return Variable
     case "telegram":
       return MessageCircle
+    case "blueprints":
+      return FileText
     default:
       return X
   }
@@ -46,7 +49,9 @@ const getMenuLabel = (panel: ActivePanel): string => {
     case "variables":
       return "Variables"
     case "telegram":
-      return "Telegram Blueprints"
+      return "Telegram"
+    case "blueprints":
+      return "Blueprints"
     default:
       return ""
   }
@@ -92,6 +97,20 @@ const FlowSidebar = memo(function FlowSidebar() {
       }
       case "telegram": {
         return <TelegramPanel />
+      }
+      case "blueprints": {
+        return (
+          <BlueprintPanel
+            onBlueprintSelect={(blueprint) => {
+              console.log("Blueprint selected:", blueprint)
+              // TODO: Implement blueprint selection logic
+            }}
+            onBlueprintCreate={() => {
+              console.log("Create blueprint clicked")
+              // TODO: Implement blueprint creation logic
+            }}
+          />
+        )
       }
       default: {
         return null
@@ -179,6 +198,20 @@ const FlowSidebar = memo(function FlowSidebar() {
             >
               {(() => {
                 const Icon = getMenuIcon("telegram")
+                return <Icon className="size-5" />
+              })()}
+            </SidebarButtonItem>
+
+            <Separator orientation="horizontal" className="w-4" />
+            
+            <SidebarButtonItem
+              active={activePanel === "blueprints"}
+              onClick={() => setActivePanel("blueprints")}
+              title={getMenuLabel("blueprints")}
+              shortcut="⌘6"
+            >
+              {(() => {
+                const Icon = getMenuIcon("blueprints")
                 return <Icon className="size-5" />
               })()}
             </SidebarButtonItem>
