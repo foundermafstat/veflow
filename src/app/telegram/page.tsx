@@ -10,7 +10,7 @@ import { Separator } from '@/components/ui/separator'
 import { Badge } from '@/components/ui/badge'
 import { Bot, MessageCircle, RefreshCw, Settings, Users, Webhook } from 'lucide-react'
 import { useToast } from '@/hooks/use-toast'
-import { fetchTelegramStats, fetchTelegramBlueprints } from '@/api/telegram'
+import { fetchTelegramStats, fetchTelegramBlueprints } from '@/app/api/telegram'
 import { TelegramStats, TelegramBlueprint } from '@/types/telegram.types'
 
 export default function TelegramPage() {

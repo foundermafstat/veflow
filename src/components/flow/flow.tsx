@@ -95,7 +95,7 @@ const Flow = memo(function Flow() {
     // Apply theme after component is mounted
     const currentTheme = resolvedTheme || theme
     setThemeClass(currentTheme === 'dark' ? 'react-flow-dark-theme' : 'react-flow-light-theme')
-    setBgColor(currentTheme === 'dark' ? '#444444' : '#cccccc')
+    setBgColor(currentTheme === 'dark' ? '#1a1a1a' : '#f5f5f5')
   }, [theme, resolvedTheme])
   
   return (

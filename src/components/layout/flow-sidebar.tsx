@@ -187,13 +187,13 @@ const FlowSidebar = memo(function FlowSidebar() {
 
         <div
           className={cn(
-            "transition-all duration-300 ease-in-out overflow-hidden bg-background border-l h-full",
+            "transition-all duration-300 ease-in-out overflow-hidden bg-background border-l border-border h-full glass-effect",
             isSidebarVisible ? "w-80" : "w-0 opacity-0",
           )}
         >
           <div className="flex flex-col h-full min-w-[320px]">
             <SidebarPanelHeader title={getMenuLabel(activePanel)} icon={getMenuIcon(activePanel)} />
-            <ScrollArea className="flex-1 min-h-0">
+            <ScrollArea className="flex-1 min-h-0 allow-scroll">
               <div className="px-4 py-4">{renderSidebarContent()}</div>
             </ScrollArea>
           </div>

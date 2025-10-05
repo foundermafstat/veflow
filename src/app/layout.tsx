@@ -81,7 +81,7 @@ export default function RootLayout({
 					}}
 				/>
 			</head>
-			<body suppressHydrationWarning={true} className="min-h-screen bg-background text-text">
+			<body suppressHydrationWarning={true} className="h-screen overflow-hidden bg-background text-text">
 				{/* Service Worker Registration */}
 				<ClientOnly>
 					<ServiceWorkerRegistration />

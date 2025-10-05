@@ -23,12 +23,14 @@ import {
 	VStack,
 	Divider,
 	Text,
+	Image,
 } from '@chakra-ui/react';
 // Custom icons as simple text/symbols
 import { useWallet, WalletButton } from '@vechain/vechain-kit';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { ThemeToggle } from '@/app/components/features/ThemeToggle';
+import { useColorMode } from '@chakra-ui/react';
 import { LanguageSelector } from '@/app/components/features/LanguageSelector';
 import { WalletAvatar } from '@/components/WalletAvatar';
 import { Button as UIButton } from '@/components/ui/button';
@@ -74,6 +76,7 @@ function WalletSection(): ReactElement {
 export function Header(): ReactElement {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const [isScrolled, setIsScrolled] = useState(false);
+	const { colorMode } = useColorMode();
 
 	// Handle scroll effect
 	useEffect(() => {
@@ -96,7 +99,7 @@ export function Header(): ReactElement {
 				as="header"
 				className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
 					isScrolled 
-						? 'bg-slate-900/95 backdrop-blur-md border-b border-gray-700' 
+						? 'glass-effect border-b border-border' 
 						: 'bg-transparent'
 				}`}
 			>
@@ -104,12 +107,15 @@ export function Header(): ReactElement {
 					<Flex className="h-16 items-center justify-between">
 						{/* Logo */}
 						<Link href="/">
-							<Heading
-								size="md"
-								className="gradient-text cursor-pointer hover:scale-105 transition-transform duration-200"
-							>
-								VeFlow
-							</Heading>
+							<Box className="cursor-pointer hover:scale-105 transition-transform duration-200">
+								<Image
+									src={colorMode === 'dark' ? '/veflow-white.svg' : '/veflow-black.svg'}
+									alt="VeFlow"
+									height="32px"
+									width="auto"
+									fallbackSrc="/veflow-black.svg"
+								/>
+							</Box>
 						</Link>
 
 						{/* Desktop Navigation */}
@@ -158,15 +164,18 @@ export function Header(): ReactElement {
 			{/* Mobile Drawer */}
 			<Drawer isOpen={isOpen} placement="right" onClose={onClose}>
 				<DrawerOverlay />
-				<DrawerContent className="bg-slate-900/95 backdrop-blur-md">
+				<DrawerContent className="glass-effect">
 					<DrawerCloseButton />
 					<DrawerHeader>
-						<Heading
-							size="md"
-							className="gradient-text"
-						>
-							VeFlow
-						</Heading>
+						<Box>
+							<Image
+								src={colorMode === 'dark' ? '/veflow-white.svg' : '/veflow-black.svg'}
+								alt="VeFlow"
+								height="32px"
+								width="auto"
+								fallbackSrc="/veflow-black.svg"
+							/>
+						</Box>
 					</DrawerHeader>
 
 					<DrawerBody>

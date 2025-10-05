@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from 'react'
-import { executeFlow, fetchFlowExecutions } from '@/api/flows'
+import { executeFlow, fetchFlowExecutions } from '@/app/api/flows'
 import { Button } from '@/components/ui/button'
 import { useToast } from '@/hooks/use-toast'
 import { Play, List, RotateCcw, CheckCircle, AlertCircle, Clock } from 'lucide-react'

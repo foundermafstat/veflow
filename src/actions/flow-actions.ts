@@ -114,9 +114,15 @@ export async function fetchAllFlows() {
       revalidatePath('/flows')
       return data.flows
     } catch (fetchError) {
+      // Специальная обработка AbortError
+      if (fetchError instanceof Error && fetchError.name === 'AbortError') {
+        console.warn("Request was aborted, using mock data")
+        return getMockFlows()
+      }
+      
       console.error("Error fetching from API:", fetchError)
       markApiUnavailable() // Отмечаем API как недоступный
-      return getMockFlows() 
+      return getMockFlows()
     }
   } catch (error) {
     console.error("Error in fetchAllFlows:", error)
@@ -206,6 +212,12 @@ export async function loadFlowWithContent(id: string) {
         error: null,
       }
     } catch (fetchError) {
+      // Специальная обработка AbortError
+      if (fetchError instanceof Error && fetchError.name === 'AbortError') {
+        console.warn("Request was aborted, using mock data")
+        return getMockFlowContent(id)
+      }
+      
       console.error("API request failed:", fetchError)
       markApiUnavailable() // Отмечаем API как недоступный
       return getMockFlowContent(id)
@@ -393,6 +405,22 @@ export async function createFlow(flowData: {
       revalidatePath('/flows')
       return data.flow
     } catch (fetchError) {
+      // Специальная обработка AbortError
+      if (fetchError instanceof Error && fetchError.name === 'AbortError') {
+        console.warn("Request was aborted, using mock flow")
+        const mockFlow = {
+          ...flowData,
+          id: `mock-${Date.now()}`,
+          description: flowData.description || "",
+          isActive: true,
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
+          mock: true
+        }
+        revalidatePath('/flows')
+        return mockFlow
+      }
+      
       console.error("API request failed:", fetchError)
       markApiUnavailable() // Отмечаем API как недоступный
       // Создаем моковый флоу вместо ошибки
@@ -506,6 +534,13 @@ export async function deleteFlow(id: string) {
       revalidatePath('/flows')
       return { success: true }
     } catch (fetchError) {
+      // Специальная обработка AbortError
+      if (fetchError instanceof Error && fetchError.name === 'AbortError') {
+        console.warn("Request was aborted, using mock deletion")
+        revalidatePath('/flows')
+        return { success: true, mock: true }
+      }
+      
       console.error("API request failed:", fetchError)
       markApiUnavailable() // Отмечаем API как недоступный
       revalidatePath('/flows')

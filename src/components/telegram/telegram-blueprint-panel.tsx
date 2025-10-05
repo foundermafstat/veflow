@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useEffect, useState } from 'react'
-import { fetchTelegramBlueprints } from '@/api/telegram'
+import { fetchTelegramBlueprints } from '@/app/api/telegram'
 import { TelegramBlueprint } from '@/types/telegram.types'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'

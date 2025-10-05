@@ -24,13 +24,13 @@ export default async function FlowLayout({ children, params }: FlowLayoutProps) 
   }
 
   return (
-    <div className="w-screen h-screen flex flex-col overflow-hidden">
+    <div className="fixed inset-0 flex flex-col overflow-hidden bg-background">
       <FlowProvider key={id} initialFlow={flow}>
         <SimulationProvider>
           <FlowNavigationBar />
-          <div className="flex grow overflow-hidden divide-x">
+          <div className="flex flex-1 overflow-hidden divide-x border-border">
             <FlowSidebar />
-            <div className="grow overflow-hidden">
+            <div className="flex-1 overflow-hidden bg-background">
               <ReactFlowProvider>{children}</ReactFlowProvider>
             </div>
           </div>
