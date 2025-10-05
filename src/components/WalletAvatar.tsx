@@ -33,13 +33,7 @@ export function WalletAvatar({
 			<Box
 				w={size}
 				h={size}
-				borderRadius="full"
-				bg="gray.200"
-				display="flex"
-				alignItems="center"
-				justifyContent="center"
-				fontSize="xs"
-				color="gray.500"
+				className="rounded-full bg-gray-200 flex items-center justify-center text-xs text-gray-500"
 			>
 				?
 			</Box>
@@ -47,22 +41,22 @@ export function WalletAvatar({
 	}
 
 	return (
-		<VStack spacing={1} align="center">
+		<VStack className="space-y-1 items-center">
 			<SafeAvatar
 				domain={domain}
 				w={size}
 				h={size}
-				borderRadius="full"
+				className="rounded-full"
 				fallbackSrc="/logo.png"
 				showLoading={true}
 			/>
 			{showDomain && domain && (
-				<Text fontSize="xs" color="gray.500" textAlign="center">
+				<Text className="text-xs text-gray-500 text-center">
 					{domain}
 				</Text>
 			)}
 			{showAddress && (
-				<Text fontSize="xs" color="gray.400" textAlign="center" maxW="100px" isTruncated>
+				<Text className="text-xs text-gray-400 text-center max-w-[100px] truncate">
 					{account.address.slice(0, 6)}...{account.address.slice(-4)}
 				</Text>
 			)}

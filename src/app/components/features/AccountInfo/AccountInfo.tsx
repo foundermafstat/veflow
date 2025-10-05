@@ -4,6 +4,9 @@ import { Box, Heading, Text, Spinner, HStack, VStack } from '@chakra-ui/react';
 import { useGetB3trBalance } from '@vechain/vechain-kit';
 import { useSafeWallet } from '@/hooks/useSafeWallet';
 import { WalletAvatar } from '@/components/WalletAvatar';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 export function AccountInfo() {
 	const { smartAccount, connectedWallet } = useSafeWallet();
@@ -13,52 +16,74 @@ export function AccountInfo() {
 		useGetB3trBalance(smartAccount.address ?? undefined);
 
 	return (
-		<VStack spacing={6} align="stretch">
+		<div className="space-y-6">
 			{smartAccount.address && (
-				<Box>
-					<HStack spacing={4} mb={4}>
-						<WalletAvatar size="48px" showDomain={true} showAddress={false} />
-						<VStack align="start" spacing={1}>
-							<Heading size={'md'}>
-								<b>Smart Account</b>
-							</Heading>
-							<Text fontSize="sm" color="gray.500">
-								Connected Wallet
+				<Card className="wallet-card">
+					<CardHeader>
+						<div className="flex items-center space-x-4">
+							<Avatar className="h-12 w-12">
+								<AvatarImage src="/avatar-fallback.svg" alt="Smart Account" />
+								<AvatarFallback className="bg-gradient-to-r from-blue-500 to-purple-600 text-white">
+									SA
+								</AvatarFallback>
+							</Avatar>
+							<div>
+								<CardTitle className="text-white">Smart Account</CardTitle>
+								<CardDescription className="text-gray-400">
+									Connected Wallet
+								</CardDescription>
+							</div>
+							<Badge variant="vechain">Active</Badge>
+						</div>
+					</CardHeader>
+					<CardContent className="space-y-3">
+						<div>
+							<Text data-testid="smart-account-address" className="font-mono text-sm text-gray-300">
+								Smart Account: {smartAccount.address}
 							</Text>
-						</VStack>
-					</HStack>
-					<Text data-testid="smart-account-address" fontFamily="mono" fontSize="sm">
-						Smart Account: {smartAccount.address}
-					</Text>
-					<Text data-testid="is-sa-deployed" fontSize="sm">
-						Deployed: {smartAccount.isDeployed.toString()}
-					</Text>
-					{b3trBalanceLoading ? (
-						<Spinner size="sm" />
-					) : (
-						<Text data-testid="b3tr-balance" fontSize="sm">
-							B3TR Balance: {b3trBalance?.formatted}
-						</Text>
-					)}
-				</Box>
+						</div>
+						<div>
+							<Text data-testid="is-sa-deployed" className="text-sm text-gray-300">
+								Deployed: {smartAccount.isDeployed.toString()}
+							</Text>
+						</div>
+						<div>
+							{b3trBalanceLoading ? (
+								<Spinner size="sm" className="text-blue-400" />
+							) : (
+								<Text data-testid="b3tr-balance" className="text-sm text-gray-300">
+									B3TR Balance: {b3trBalance?.formatted}
+								</Text>
+							)}
+						</div>
+					</CardContent>
+				</Card>
 			)}
 
-			<Box>
-				<HStack spacing={4} mb={4}>
-					<WalletAvatar size="48px" showDomain={true} showAddress={true} />
-					<VStack align="start" spacing={1}>
-						<Heading size={'md'}>
-							<b>Wallet</b>
-						</Heading>
-						<Text fontSize="sm" color="gray.500">
-							Connected Account
-						</Text>
-					</VStack>
-				</HStack>
-				<Text data-testid="connected-wallet-address" fontFamily="mono" fontSize="sm">
-					Address: {connectedWallet?.address}
-				</Text>
-			</Box>
-		</VStack>
+			<Card className="wallet-card">
+				<CardHeader>
+					<div className="flex items-center space-x-4">
+						<Avatar className="h-12 w-12">
+							<AvatarImage src="/avatar-fallback.svg" alt="Wallet" />
+							<AvatarFallback className="bg-gradient-to-r from-blue-500 to-purple-600 text-white">
+								W
+							</AvatarFallback>
+						</Avatar>
+						<div>
+							<CardTitle className="text-white">Wallet</CardTitle>
+							<CardDescription className="text-gray-400">
+								Connected Account
+							</CardDescription>
+						</div>
+						<Badge variant="success">Connected</Badge>
+					</div>
+				</CardHeader>
+				<CardContent>
+					<Text data-testid="connected-wallet-address" className="font-mono text-sm text-gray-300">
+						Address: {connectedWallet?.address}
+					</Text>
+				</CardContent>
+			</Card>
+		</div>
 	);
 }

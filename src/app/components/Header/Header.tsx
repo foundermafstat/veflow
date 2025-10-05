@@ -31,6 +31,9 @@ import { useState, useEffect } from 'react';
 import { ThemeToggle } from '@/app/components/features/ThemeToggle';
 import { LanguageSelector } from '@/app/components/features/LanguageSelector';
 import { WalletAvatar } from '@/components/WalletAvatar';
+import { Button as UIButton } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 // Safe wrapper for wallet functionality
 function WalletSection(): ReactElement {
@@ -40,11 +43,12 @@ function WalletSection(): ReactElement {
 			<>
 				{/* Wallet Avatar */}
 				{account && (
-					<WalletAvatar 
-						size="32px" 
-						showDomain={false} 
-						showAddress={false} 
-					/>
+					<Avatar className="h-8 w-8">
+						<AvatarImage src="/avatar-fallback.svg" alt="Wallet" />
+						<AvatarFallback className="bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs">
+							{account.address.slice(0, 2).toUpperCase()}
+						</AvatarFallback>
+					</Avatar>
 				)}
 				
 				{/* Wallet Button */}
@@ -53,20 +57,12 @@ function WalletSection(): ReactElement {
 					desktopVariant="iconDomainAndAssets"
 				/>
 
-				{/* Mobile wallet status */}
-				{/* {account && (
-					<>
-						<Box p={4} bg="gray.800" borderRadius="md">
-							<Text fontSize="sm" color="gray.400" mb={2}>
-								Connected Account
-							</Text>
-							<Text fontFamily="mono" fontSize="xs" wordBreak="break-all">
-								{account.address}
-							</Text>
-						</Box>
-						<Divider />
-					</>
-				)} */}
+				{/* Connection Status Badge */}
+				{account && (
+					<Badge variant="vechain" className="hidden sm:inline-flex">
+						Connected
+					</Badge>
+				)}
 			</>
 		);
 	} catch (error) {
@@ -98,53 +94,43 @@ export function Header(): ReactElement {
 		<>
 			<Box
 				as="header"
-				position="fixed"
-				top={0}
-				left={0}
-				right={0}
-				zIndex={1000}
-				bg={isScrolled ? 'rgba(26, 32, 44, 0.95)' : 'transparent'}
-				backdropFilter={isScrolled ? 'blur(10px)' : 'none'}
-				borderBottom={isScrolled ? '1px solid' : 'none'}
-				borderColor="gray.700"
-				transition="all 0.3s ease"
+				className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
+					isScrolled 
+						? 'bg-slate-900/95 backdrop-blur-md border-b border-gray-700' 
+						: 'bg-transparent'
+				}`}
 			>
-				<Box maxW="container.xl" mx="auto" px={4}>
-					<Flex h={16} alignItems="center" justifyContent="space-between">
+				<Box className="max-w-7xl mx-auto px-4">
+					<Flex className="h-16 items-center justify-between">
 						{/* Logo */}
 						<Link href="/">
 							<Heading
 								size="md"
-								bgGradient="linear(to-r, blue.400, purple.400)"
-								bgClip="text"
-								cursor="pointer"
-								_hover={{ transform: 'scale(1.05)' }}
-								transition="transform 0.2s"
+								className="gradient-text cursor-pointer hover:scale-105 transition-transform duration-200"
 							>
 								VeFlow
 							</Heading>
 						</Link>
 
 						{/* Desktop Navigation */}
-						<HStack spacing={8} display={{ base: 'none', md: 'flex' }}>
+						<HStack className="hidden md:flex space-x-8">
 							{navItems.map((item) => (
 								<Link key={item.href} href={item.href}>
-									<Button
+									<UIButton
 										variant="ghost"
 										size="sm"
-										_hover={{ bg: 'gray.700', transform: 'translateY(-1px)' }}
-										transition="all 0.2s"
+										className="hover:bg-gray-700 hover:-translate-y-1 transition-all duration-200"
 									>
 										{item.label}
-									</Button>
+									</UIButton>
 								</Link>
 							))}
 						</HStack>
 
-						<Spacer />
+						<div className="flex-1" />
 
 						{/* Right side controls */}
-						<HStack spacing={4}>
+						<HStack className="space-x-4">
 							{/* Theme toggle */}
 							<ThemeToggle />
 
@@ -160,8 +146,7 @@ export function Header(): ReactElement {
 								onClick={onOpen}
 								variant="ghost"
 								size="sm"
-								display={{ base: 'flex', md: 'none' }}
-								_hover={{ bg: 'gray.700' }}
+								className="flex md:hidden hover:bg-gray-700"
 							>
 								☰
 							</IconButton>
@@ -173,35 +158,32 @@ export function Header(): ReactElement {
 			{/* Mobile Drawer */}
 			<Drawer isOpen={isOpen} placement="right" onClose={onClose}>
 				<DrawerOverlay />
-				<DrawerContent>
+				<DrawerContent className="bg-slate-900/95 backdrop-blur-md">
 					<DrawerCloseButton />
 					<DrawerHeader>
 						<Heading
 							size="md"
-							bgGradient="linear(to-r, blue.400, purple.400)"
-							bgClip="text"
+							className="gradient-text"
 						>
 							VeFlow
 						</Heading>
 					</DrawerHeader>
 
 					<DrawerBody>
-						<VStack spacing={4} align="stretch">
+						<VStack className="space-y-4 items-stretch">
 							{/* Wallet Status */}
 							<WalletSection />
 
 							{/* Navigation Links */}
 							{navItems.map((item) => (
 								<Link key={item.href} href={item.href} onClick={onClose}>
-									<Button
+									<UIButton
 										variant="ghost"
 										size="lg"
-										w="full"
-										justifyContent="flex-start"
-										_hover={{ bg: 'gray.700' }}
+										className="w-full justify-start hover:bg-gray-700"
 									>
 										{item.label}
-									</Button>
+									</UIButton>
 								</Link>
 							))}
 

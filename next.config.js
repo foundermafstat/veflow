@@ -1,3 +1,4 @@
+const path = require('path');
 const basePath = process.env.BASE_PATH ?? '';
 
 /** @type {import('next').NextConfig} */
@@ -19,6 +20,23 @@ const nextConfig = {
 				: false,
 	},
 
+	// Tailwind CSS 4 configuration
+	experimental: {
+		// Enable modern webpack features
+		webpackBuildWorker: true,
+		// Better bundling
+		optimizePackageImports: ['@chakra-ui/react', '@vechain/vechain-kit', '@radix-ui/react-avatar', '@radix-ui/react-slot', '@radix-ui/react-dialog'],
+		// Tailwind CSS 4 support
+		turbo: {
+			rules: {
+				'*.css': {
+					loaders: ['@tailwindcss/vite'],
+					as: '*.css',
+				},
+			},
+		},
+	},
+
 	// Enable stable Turbopack features
 	turbopack: {
 		resolveAlias: {
@@ -32,7 +50,7 @@ const nextConfig = {
 		// Enable modern webpack features
 		webpackBuildWorker: true,
 		// Better bundling
-		optimizePackageImports: ['@chakra-ui/react', '@vechain/vechain-kit'],
+		optimizePackageImports: ['@chakra-ui/react', '@vechain/vechain-kit', '@radix-ui/react-avatar', '@radix-ui/react-slot', '@radix-ui/react-dialog'],
 	},
 
 	// Webpack optimizations
@@ -44,6 +62,12 @@ const nextConfig = {
 			net: false,
 			tls: false,
 			crypto: false,
+		};
+
+		// Ensure proper module resolution for Radix UI
+		config.resolve.alias = {
+			...config.resolve.alias,
+			'@': path.resolve(__dirname, 'src'),
 		};
 
 		// Optimize bundle splitting

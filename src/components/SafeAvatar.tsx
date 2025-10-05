@@ -80,11 +80,7 @@ export function SafeAvatar({
 		return (
 			<Box
 				{...props}
-				display="flex"
-				alignItems="center"
-				justifyContent="center"
-				bg="gray.100"
-				borderRadius="full"
+				className="flex items-center justify-center bg-gray-100 rounded-full"
 			>
 				<Spinner size="sm" />
 			</Box>
@@ -100,13 +96,7 @@ export function SafeAvatar({
 			fallback={
 				<Box
 					{...props}
-					display="flex"
-					alignItems="center"
-					justifyContent="center"
-					bg="gray.100"
-					borderRadius="full"
-					fontSize="xs"
-					color="gray.500"
+					className="flex items-center justify-center bg-gray-100 rounded-full text-xs text-gray-500"
 				>
 					{domain ? domain.charAt(0).toUpperCase() : '?'}
 				</Box>

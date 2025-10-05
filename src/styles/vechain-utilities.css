@@ -1,0 +1,202 @@
+/* VeChain specific Tailwind utilities */
+
+/* VeChain brand gradients */
+.vechain-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.vechain-gradient-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Wallet card styles */
+.wallet-card {
+  @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-xl;
+}
+
+.wallet-card-dark {
+  @apply bg-black/20 border-white/5;
+}
+
+/* Glass morphism effects */
+.glass-light {
+  @apply bg-white/10 backdrop-blur-md border border-white/20;
+}
+
+.glass-dark {
+  @apply bg-black/20 backdrop-blur-md border border-white/10;
+}
+
+/* VeChain specific animations */
+@keyframes vechain-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.vechain-pulse {
+  animation: vechain-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Wallet connection states */
+.wallet-connecting {
+  @apply animate-pulse bg-blue-500/20 border-blue-500/50;
+}
+
+.wallet-connected {
+  @apply bg-green-500/20 border-green-500/50;
+}
+
+.wallet-error {
+  @apply bg-red-500/20 border-red-500/50;
+}
+
+/* VeChain specific shadows */
+.vechain-shadow {
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+}
+
+.vechain-shadow-lg {
+  box-shadow: 0 0 40px rgba(102, 126, 234, 0.4);
+}
+
+/* Custom scrollbar for VeChain theme */
+.vechain-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.vechain-scrollbar::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+.vechain-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-gradient-to-b from-blue-400 to-purple-600 rounded-full;
+}
+
+.vechain-scrollbar::-webkit-scrollbar-thumb:hover {
+  @apply from-blue-500 to-purple-700;
+}
+
+/* VeChain button styles */
+.vechain-button {
+  @apply bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold py-2 px-4 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl;
+}
+
+.vechain-button-outline {
+  @apply border-2 border-blue-500 text-blue-500 font-semibold py-2 px-4 rounded-lg hover:bg-blue-500 hover:text-white transition-all duration-200;
+}
+
+/* VeChain input styles */
+.vechain-input {
+  @apply bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg px-4 py-2 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200;
+}
+
+/* VeChain modal styles */
+.vechain-modal {
+  @apply bg-slate-900/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl;
+}
+
+/* VeChain card styles */
+.vechain-card {
+  @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-6 shadow-xl;
+}
+
+.vechain-card-dark {
+  @apply bg-black/20 border-white/5;
+}
+
+/* VeChain text styles */
+.vechain-text-primary {
+  @apply text-white;
+}
+
+.vechain-text-secondary {
+  @apply text-gray-400;
+}
+
+.vechain-text-muted {
+  @apply text-gray-500;
+}
+
+/* VeChain spacing utilities */
+.vechain-space-y > * + * {
+  @apply mt-4;
+}
+
+.vechain-space-x > * + * {
+  @apply ml-4;
+}
+
+/* VeChain responsive utilities */
+@screen sm {
+  .vechain-responsive {
+    @apply text-sm;
+  }
+}
+
+@screen md {
+  .vechain-responsive {
+    @apply text-base;
+  }
+}
+
+@screen lg {
+  .vechain-responsive {
+    @apply text-lg;
+  }
+}
+
+/* VeChain dark mode utilities */
+.dark .vechain-dark {
+  @apply bg-slate-900 text-white;
+}
+
+.dark .vechain-dark-card {
+  @apply bg-slate-800 border-slate-700;
+}
+
+/* VeChain animation utilities */
+.vechain-fade-in {
+  animation: vechainFadeIn 0.5s ease-in-out;
+}
+
+.vechain-slide-up {
+  animation: vechainSlideUp 0.3s ease-out;
+}
+
+.vechain-scale-in {
+  animation: vechainScaleIn 0.2s ease-out;
+}
+
+@keyframes vechainFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes vechainSlideUp {
+  from { 
+    transform: translateY(10px); 
+    opacity: 0; 
+  }
+  to { 
+    transform: translateY(0); 
+    opacity: 1; 
+  }
+}
+
+@keyframes vechainScaleIn {
+  from { 
+    transform: scale(0.95); 
+    opacity: 0; 
+  }
+  to { 
+    transform: scale(1); 
+    opacity: 1; 
+  }
+}
