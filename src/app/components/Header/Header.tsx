@@ -109,7 +109,7 @@ export function Header(): ReactElement {
 						<Link href="/">
 							<Box className="cursor-pointer hover:scale-105 transition-transform duration-200">
 								<Image
-									src={colorMode === 'dark' ? '/veflow-white.svg' : '/veflow-black.svg'}
+									src={colorMode === 'dark' ? '/veflow-white.png' : '/veflow-black.png'}
 									alt="VeFlow"
 									height="32px"
 									width="auto"
@@ -169,11 +169,11 @@ export function Header(): ReactElement {
 					<DrawerHeader>
 						<Box>
 							<Image
-								src={colorMode === 'dark' ? '/veflow-white.svg' : '/veflow-black.svg'}
+								src={colorMode === 'dark' ? '/veflow-white.png' : '/veflow-black.png'}
 								alt="VeFlow"
 								height="32px"
 								width="auto"
-								fallbackSrc="/veflow-black.svg"
+								fallbackSrc="/veflow-black.png"
 							/>
 						</Box>
 					</DrawerHeader>

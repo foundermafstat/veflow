@@ -19,6 +19,7 @@ import { ClientOnly } from '../components/ClientOnly';
 import { HeaderPlaceholder } from '../components/HeaderPlaceholder';
 import { HydrationBoundary } from '../components/HydrationBoundary';
 import { ServiceWorkerRegistration } from '../components/ServiceWorkerRegistration';
+import { ThemeProvider } from '../components/theme-provider';
 
 const VechainKitProviderWrapper = dynamic(
 	async () =>
@@ -82,96 +83,104 @@ export default function RootLayout({
 				/>
 			</head>
 			<body suppressHydrationWarning={true} className="h-screen overflow-hidden bg-background text-text">
-				{/* Service Worker Registration */}
-				<ClientOnly>
-					<ServiceWorkerRegistration />
-				</ClientOnly>
+				{/* Theme Provider */}
+				<ThemeProvider
+					attribute="class"
+					defaultTheme="system"
+					enableSystem
+					disableTransitionOnChange
+				>
+					{/* Service Worker Registration */}
+					<ClientOnly>
+						<ServiceWorkerRegistration />
+					</ClientOnly>
 
-				{/* Prevent 404 errors for common requests */}
-				<script
-					dangerouslySetInnerHTML={{
-						__html: `
-							// Prevent 404 errors for common requests
-							if (typeof window !== 'undefined') {
-								// Handle service worker registration errors
-								if ('serviceWorker' in navigator) {
-									navigator.serviceWorker.getRegistrations().then(registrations => {
-										registrations.forEach(registration => {
-											if (registration.scope.includes('/sw.js')) {
-												registration.unregister();
-											}
+					{/* Prevent 404 errors for common requests */}
+					<script
+						dangerouslySetInnerHTML={{
+							__html: `
+								// Prevent 404 errors for common requests
+								if (typeof window !== 'undefined') {
+									// Handle service worker registration errors
+									if ('serviceWorker' in navigator) {
+										navigator.serviceWorker.getRegistrations().then(registrations => {
+											registrations.forEach(registration => {
+												if (registration.scope.includes('/sw.js')) {
+													registration.unregister();
+												}
+											});
 										});
-									});
-								}
-							}
-						`,
-					}}
-				/>
-
-				{/* Web3 Safe Initialization */}
-				<ClientOnly>
-					<Web3SafeInit />
-					<PrivyErrorHandler />
-				</ClientOnly>
-
-				{/* VeWorld Error Monitor */}
-				<ClientOnly>
-					<VeWorldErrorMonitor />
-				</ClientOnly>
-
-				{/* Avatar Error Boundary */}
-				<ClientOnly>
-					<AvatarErrorBoundary>
-						{/* Chakra UI Provider */}
-						<ChakraProvider theme={darkTheme}>
-							{/* Network Error Boundary */}
-							<NetworkErrorBoundary>
-								{/* Hydration Boundary */}
-								<HydrationBoundary
-									fallback={
-										<>
-											{/* Header placeholder */}
-											<HeaderPlaceholder />
-											{/* Main Content */}
-											<Box pt={16}>{children}</Box>
-										</>
 									}
-								>
-									{/* VeChainKit Error Boundary */}
-									<VeChainKitErrorBoundary
+								}
+							`,
+						}}
+					/>
+
+					{/* Web3 Safe Initialization */}
+					<ClientOnly>
+						<Web3SafeInit />
+						<PrivyErrorHandler />
+					</ClientOnly>
+
+					{/* VeWorld Error Monitor */}
+					<ClientOnly>
+						<VeWorldErrorMonitor />
+					</ClientOnly>
+
+					{/* Avatar Error Boundary */}
+					<ClientOnly>
+						<AvatarErrorBoundary>
+							{/* Chakra UI Provider */}
+							<ChakraProvider theme={darkTheme}>
+								{/* Network Error Boundary */}
+								<NetworkErrorBoundary>
+									{/* Hydration Boundary */}
+									<HydrationBoundary
 										fallback={
 											<>
-												{/* Header */}
-												<Header />
+												{/* Header placeholder */}
+												<HeaderPlaceholder />
 												{/* Main Content */}
 												<Box pt={16}>{children}</Box>
 											</>
 										}
 									>
-										{/* VechainKit Provider with error handling */}
-										<VechainKitProviderWrapper>
-											<Suspense
-												fallback={
-													<>
-														{/* Header placeholder */}
-														<HeaderPlaceholder />
-														{/* Main Content */}
-														<Box pt={16}>{children}</Box>
-													</>
-												}
-											>
-												{/* Header */}
-												<Header />
-												{/* Main Content */}
-												<Box pt={16}>{children}</Box>
-											</Suspense>
-										</VechainKitProviderWrapper>
-									</VeChainKitErrorBoundary>
-								</HydrationBoundary>
-							</NetworkErrorBoundary>
-						</ChakraProvider>
-					</AvatarErrorBoundary>
-				</ClientOnly>
+										{/* VeChainKit Error Boundary */}
+										<VeChainKitErrorBoundary
+											fallback={
+												<>
+													{/* Header */}
+													<Header />
+													{/* Main Content */}
+													<Box pt={16}>{children}</Box>
+												</>
+											}
+										>
+											{/* VechainKit Provider with error handling */}
+											<VechainKitProviderWrapper>
+												<Suspense
+													fallback={
+														<>
+															{/* Header placeholder */}
+															<HeaderPlaceholder />
+															{/* Main Content */}
+															<Box pt={16}>{children}</Box>
+														</>
+													}
+												>
+													{/* Header */}
+													<Header />
+													{/* Main Content */}
+													<Box pt={16}>{children}</Box>
+												</Suspense>
+											</VechainKitProviderWrapper>
+										</VeChainKitErrorBoundary>
+									</HydrationBoundary>
+								</NetworkErrorBoundary>
+							</ChakraProvider>
+						</AvatarErrorBoundary>
+					</ClientOnly>
+				</ThemeProvider>
 			</body>
 		</html>
 	);

@@ -5,7 +5,7 @@ import type { Flow, FlowExecution } from "@/types/flow.types"
 import { auth } from "@/lib/auth"
 
 // Базовый URL для API запросов
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || (typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3000')
 
 // Состояние серверного API
 let API_STATUS = {
@@ -194,7 +194,10 @@ export async function loadFlowWithContent(id: string) {
         headers: {
           "Authorization": `Bearer ${session.accessToken}`,
         },
-        signal: controller.signal  // Используем совместимый метод для таймаута
+        signal: controller.signal,  // Используем совместимый метод для таймаута
+        // Добавляем дополнительные опции для лучшей совместимости
+        cache: 'no-cache',
+        mode: 'cors'
       })
 
       if (!response.ok) {
@@ -212,13 +215,21 @@ export async function loadFlowWithContent(id: string) {
         error: null,
       }
     } catch (fetchError) {
-      // Специальная обработка AbortError
+      // Специальная обработка различных типов ошибок
       if (fetchError instanceof Error && fetchError.name === 'AbortError') {
         console.warn("Request was aborted, using mock data")
         return getMockFlowContent(id)
       }
       
-      console.error("API request failed:", fetchError)
+      // Обработка сетевых ошибок
+      if (fetchError instanceof TypeError && fetchError.message.includes('fetch failed')) {
+        console.warn("Network error: API server unavailable")
+      } else if (fetchError instanceof Error) {
+        console.warn("API request failed:", fetchError.message)
+      } else {
+        console.error("Unknown error:", fetchError)
+      }
+      
       markApiUnavailable() // Отмечаем API как недоступный
       return getMockFlowContent(id)
     }

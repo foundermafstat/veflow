@@ -19,9 +19,11 @@ export function PrivyErrorHandler() {
                 errorMessage.includes('@privy-io') ||
                 errorMessage.includes('privy') ||
                 errorMessage.includes('setWalletProvider') ||
-                errorMessage.includes('_this_walletProvider.on is not a function')
+                errorMessage.includes('_this_walletProvider.on is not a function') ||
+                errorMessage.includes('walletProvider.on is not a function') ||
+                errorMessage.includes('on is not a function')
             ) {
-                console.warn('Privy error caught and suppressed:', errorMessage);
+                console.warn('Privy wallet provider error caught and suppressed:', errorMessage);
                 event.preventDefault(); // Prevent the error from showing in console
                 return;
             }
@@ -37,9 +39,11 @@ export function PrivyErrorHandler() {
                 errorMessage.includes('privy') ||
                 errorMessage.includes('setWalletProvider') ||
                 errorMessage.includes('_this_walletProvider.on is not a function') ||
+                errorMessage.includes('walletProvider.on is not a function') ||
+                errorMessage.includes('on is not a function') ||
                 source?.includes('@privy-io')
             ) {
-                console.warn('Privy error caught and suppressed:', errorMessage);
+                console.warn('Privy wallet provider error caught and suppressed:', errorMessage);
                 return true; // Prevent the error from propagating
             }
 
