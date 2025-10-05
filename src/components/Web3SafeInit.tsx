@@ -117,6 +117,17 @@ export function Web3SafeInit() {
                     return true; // Prevent the error from propagating
                 }
 
+                // Check for Privy.io errors
+                if (
+                    typeof message === 'string' &&
+                    (message.includes('@privy-io') || 
+                     message.includes('privy') ||
+                     message.includes('setWalletProvider'))
+                ) {
+                    console.warn('Privy.io error caught:', message);
+                    return true; // Prevent the error from propagating
+                }
+
                 if (originalError) {
                     return originalError.call(
                         this,

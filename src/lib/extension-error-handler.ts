@@ -31,6 +31,12 @@ const EXTENSION_ERROR_PATTERNS = [
     /walletProvider.*on is not a function/,
     /\.on is not a function/,
     /walletProvider.*error/i,
+    
+    // Privy.io specific patterns
+    /@privy-io.*react-auth/,
+    /privy.*provider.*error/i,
+    /privy.*wallet.*error/i,
+    /setWalletProvider.*error/i,
 ];
 
 /**

@@ -43,7 +43,10 @@ export function VechainKitProviderWrapper({ children }: Props) {
 			// Add error handling for wallet provider conflicts
 			const handleError = (error: any) => {
 				if (error?.message?.includes('walletProvider') || 
-					error?.message?.includes('on is not a function')) {
+					error?.message?.includes('on is not a function') ||
+					error?.message?.includes('@privy-io') ||
+					error?.message?.includes('privy') ||
+					error?.message?.includes('setWalletProvider')) {
 					console.warn('Wallet provider error detected, using fallback mode');
 					setHasError(true);
 					return true;

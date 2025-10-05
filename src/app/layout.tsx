@@ -2,6 +2,7 @@
 
 import { ChakraProvider, Box } from '@chakra-ui/react';
 import './globals.css';
+import "./node-animations.css"
 import dynamic from 'next/dynamic';
 import { darkTheme } from './theme';
 import '../lib/window-ethereum-fix';
@@ -11,6 +12,7 @@ import { NetworkErrorBoundary } from '../components/NetworkErrorBoundary';
 import { VeWorldErrorMonitor } from '../components/VeWorldErrorMonitor';
 import { AvatarErrorBoundary } from '../components/AvatarErrorBoundary';
 import { VeChainKitErrorBoundary } from '../components/VeChainKitErrorBoundary';
+import { PrivyErrorHandler } from '../components/PrivyErrorHandler';
 import { Header } from './components/Header';
 import { Suspense } from 'react';
 import { ClientOnly } from '../components/ClientOnly';
@@ -109,6 +111,7 @@ export default function RootLayout({
 				{/* Web3 Safe Initialization */}
 				<ClientOnly>
 					<Web3SafeInit />
+					<PrivyErrorHandler />
 				</ClientOnly>
 
 				{/* VeWorld Error Monitor */}

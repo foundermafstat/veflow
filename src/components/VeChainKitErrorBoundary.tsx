@@ -26,16 +26,19 @@ export class VeChainKitErrorBoundary extends Component<
 	}
 
 	static getDerivedStateFromError(error: Error): VeChainKitErrorBoundaryState {
-		// Check if this is a VeChainKit or wallet provider error
-		const isVeChainKitError = 
+		// Check if this is a VeChainKit, wallet provider, or Privy error
+		const isWalletError = 
 			error.message.includes('walletProvider') ||
 			error.message.includes('on is not a function') ||
 			error.message.includes('VeChainKit') ||
 			error.message.includes('ethereum') ||
+			error.message.includes('@privy-io') ||
+			error.message.includes('privy') ||
+			error.message.includes('setWalletProvider') ||
 			error.stack?.includes('chrome-extension');
 
-		if (isVeChainKitError) {
-			console.warn('VeChainKit error caught by boundary:', error.message);
+		if (isWalletError) {
+			console.warn('Wallet provider error caught by boundary:', error.message);
 			return { hasError: true, error };
 		}
 
