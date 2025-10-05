@@ -1,0 +1,27 @@
+{
+	"name": "VeFlow",
+	"short_name": "VeFlow",
+	"description": "VeFlow is a next-generation scenario builder on the VeChain blockchain that combines modular blueprints, smart contract endpoints, and AI-powered LLM integration to create adaptive, intelligent, and verifiable workflows across industries.",
+	"start_url": "/",
+	"display": "standalone",
+	"background_color": "#1a202c",
+	"theme_color": "#1a202c",
+	"orientation": "portrait-primary",
+	"icons": [
+		{
+			"src": "/logo.png",
+			"sizes": "192x192",
+			"type": "image/png",
+			"purpose": "any maskable"
+		},
+		{
+			"src": "/logo.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "any maskable"
+		}
+	],
+	"categories": ["finance", "productivity"],
+	"lang": "en",
+	"dir": "ltr"
+}
