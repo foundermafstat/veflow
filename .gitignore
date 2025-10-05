@@ -1,60 +1,40 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# Dependencies
+node_modules/
+client/node_modules/
+contract/node_modules/
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
-.yarn/install-state.gz
-
-# testing
-/coverage
-
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
-# misc
-.DS_Store
-*.pem
-
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# local env files
+# Environment variables
 .env
-.env*.local
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+client/.env
+client/.env.local
+client/.env.development.local
+client/.env.test.local
+client/.env.production.local
+contract/.env
+contract/.env.local
+contract/.env.development.local
+contract/.env.test.local
+contract/.env.production.local
 
-# vercel
-.vercel
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
-
-# build outputs
+# Build outputs
 dist/
-.turbo/
-
-# IDE and editor files
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS generated files
-Thumbs.db
-ehthumbs.db
-Desktop.ini
+build/
+out/
+client/dist/
+client/build/
+client/out/
+contract/cache/
 
 # Logs
 *.log
-.pnpm-debug.log*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 lerna-debug.log*
 
 # Runtime data
@@ -72,6 +52,9 @@ coverage/
 
 # Dependency directories
 jspm_packages/
+
+# TypeScript cache
+*.tsbuildinfo
 
 # Optional npm cache directory
 .npm
@@ -100,10 +83,15 @@ jspm_packages/
 
 # Next.js build output
 .next/
-out/
+client/.next/
 
 # Nuxt.js build / generate output
 .nuxt
+dist
+
+# Gatsby files
+.cache/
+public
 
 # Storybook build outputs
 .out
@@ -114,11 +102,28 @@ tmp/
 temp/
 
 # Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Hardhat files
+contract/cache/
+contract/artifacts/
+contract/typechain-types/
+
+# Solidity
+*.sol.bak
+
+# Test coverage
+coverage.json

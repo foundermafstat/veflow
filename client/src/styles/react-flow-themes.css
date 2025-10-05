@@ -1,0 +1,169 @@
+/* ReactFlow Dark Theme */
+.react-flow-dark-theme {
+  background-color: hsl(var(--background)) !important;
+}
+
+.react-flow-dark-theme .react-flow__background {
+  background-color: hsl(var(--background)) !important;
+}
+
+.react-flow-dark-theme .react-flow__background .react-flow__background-pattern {
+  stroke: hsl(var(--border)) !important;
+}
+
+.react-flow-dark-theme .react-flow__node {
+  background-color: hsl(var(--card)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  color: hsl(var(--card-foreground)) !important;
+}
+
+.react-flow-dark-theme .react-flow__node:hover {
+  background-color: hsl(var(--accent)) !important;
+}
+
+.react-flow-dark-theme .react-flow__node.selected {
+  background-color: hsl(var(--accent)) !important;
+  border-color: hsl(var(--primary)) !important;
+}
+
+.react-flow-dark-theme .react-flow__edge {
+  stroke: hsl(var(--muted-foreground)) !important;
+}
+
+.react-flow-dark-theme .react-flow__edge.selected {
+  stroke: hsl(var(--primary)) !important;
+}
+
+.react-flow-dark-theme .react-flow__edge-path {
+  stroke: hsl(var(--muted-foreground)) !important;
+}
+
+.react-flow-dark-theme .react-flow__edge.selected .react-flow__edge-path {
+  stroke: hsl(var(--primary)) !important;
+}
+
+.react-flow-dark-theme .react-flow__handle {
+  background-color: hsl(var(--muted)) !important;
+  border: 2px solid hsl(var(--border)) !important;
+}
+
+.react-flow-dark-theme .react-flow__handle:hover {
+  background-color: hsl(var(--primary)) !important;
+  border-color: hsl(var(--primary)) !important;
+}
+
+.react-flow-dark-theme .react-flow__handle.connecting {
+  background-color: hsl(var(--primary)) !important;
+  border-color: hsl(var(--primary)) !important;
+}
+
+.react-flow-dark-theme .react-flow__controls {
+  background-color: hsl(var(--card)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+}
+
+.react-flow-dark-theme .react-flow__controls-button {
+  background-color: hsl(var(--card)) !important;
+  border-bottom: 1px solid hsl(var(--border)) !important;
+  color: hsl(var(--card-foreground)) !important;
+}
+
+.react-flow-dark-theme .react-flow__controls-button:hover {
+  background-color: hsl(var(--accent)) !important;
+}
+
+.react-flow-dark-theme .react-flow__minimap {
+  background-color: hsl(var(--card)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+}
+
+.react-flow-dark-theme .react-flow__panel {
+  background-color: hsl(var(--card)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  color: hsl(var(--card-foreground)) !important;
+}
+
+/* ReactFlow Light Theme */
+.react-flow-light-theme {
+  background-color: hsl(var(--background)) !important;
+}
+
+.react-flow-light-theme .react-flow__background {
+  background-color: hsl(var(--background)) !important;
+}
+
+.react-flow-light-theme .react-flow__background .react-flow__background-pattern {
+  stroke: hsl(var(--border)) !important;
+}
+
+.react-flow-light-theme .react-flow__node {
+  background-color: hsl(var(--card)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  color: hsl(var(--card-foreground)) !important;
+}
+
+.react-flow-light-theme .react-flow__node:hover {
+  background-color: hsl(var(--accent)) !important;
+}
+
+.react-flow-light-theme .react-flow__node.selected {
+  background-color: hsl(var(--accent)) !important;
+  border-color: hsl(var(--primary)) !important;
+}
+
+.react-flow-light-theme .react-flow__edge {
+  stroke: hsl(var(--muted-foreground)) !important;
+}
+
+.react-flow-light-theme .react-flow__edge.selected {
+  stroke: hsl(var(--primary)) !important;
+}
+
+.react-flow-light-theme .react-flow__edge-path {
+  stroke: hsl(var(--muted-foreground)) !important;
+}
+
+.react-flow-light-theme .react-flow__edge.selected .react-flow__edge-path {
+  stroke: hsl(var(--primary)) !important;
+}
+
+.react-flow-light-theme .react-flow__handle {
+  background-color: hsl(var(--muted)) !important;
+  border: 2px solid hsl(var(--border)) !important;
+}
+
+.react-flow-light-theme .react-flow__handle:hover {
+  background-color: hsl(var(--primary)) !important;
+  border-color: hsl(var(--primary)) !important;
+}
+
+.react-flow-light-theme .react-flow__handle.connecting {
+  background-color: hsl(var(--primary)) !important;
+  border-color: hsl(var(--primary)) !important;
+}
+
+.react-flow-light-theme .react-flow__controls {
+  background-color: hsl(var(--card)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+}
+
+.react-flow-light-theme .react-flow__controls-button {
+  background-color: hsl(var(--card)) !important;
+  border-bottom: 1px solid hsl(var(--border)) !important;
+  color: hsl(var(--card-foreground)) !important;
+}
+
+.react-flow-light-theme .react-flow__controls-button:hover {
+  background-color: hsl(var(--accent)) !important;
+}
+
+.react-flow-light-theme .react-flow__minimap {
+  background-color: hsl(var(--card)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+}
+
+.react-flow-light-theme .react-flow__panel {
+  background-color: hsl(var(--card)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  color: hsl(var(--card-foreground)) !important;
+}

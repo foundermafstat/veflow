@@ -1,0 +1,46 @@
+{
+  "name": "veflow-contracts",
+  "version": "1.0.0",
+  "description": "VeFlow Smart Contract Suite for VeChain Testnet",
+  "main": "index.js",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy:testnet": "hardhat run scripts/deploy.js --network vechain_testnet",
+    "deploy:mainnet": "hardhat run scripts/deploy.js --network vechain_mainnet",
+    "verify:testnet": "hardhat run scripts/verify.js --network vechain_testnet",
+    "verify:mainnet": "hardhat run scripts/verify.js --network vechain_mainnet",
+    "upgrade": "hardhat run scripts/upgrade.js",
+    "test-deployment": "hardhat run scripts/test-deployment.js",
+    "get-wallet": "hardhat run scripts/get-wallet-info.js",
+    "get-address": "node scripts/generate-address.js",
+    "node": "hardhat node",
+    "clean": "hardhat clean"
+  },
+  "keywords": [
+    "vechain",
+    "smart-contracts",
+    "hardhat",
+    "solidity",
+    "blockchain"
+  ],
+  "author": "VeFlow Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "^2.0.4",
+    "@nomicfoundation/hardhat-ethers": "^3.1.0",
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.10",
+    "@nomicfoundation/hardhat-verify": "^2.0.6",
+    "@openzeppelin/contracts": "^4.9.6",
+    "chai": "^4.4.1",
+    "dotenv": "^17.2.3",
+    "ethers": "^6.13.4",
+    "hardhat": "^2.26.3",
+    "hardhat-gas-reporter": "^1.0.10",
+    "solidity-coverage": "^0.8.11"
+  },
+  "dependencies": {
+    "@vechain/sdk-core": "^1.2.0",
+    "@vechain/sdk-hardhat-plugin": "^1.2.0"
+  }
+}
