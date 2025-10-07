@@ -103,17 +103,17 @@ const competitiveAdvantages = [
 
 export function Benefits() {
   return (
-    <section className="py-24 bg-white dark:bg-gray-800">
-      <div className="container mx-auto px-4">
+    <section className="section-spacing bg-white dark:bg-gray-800 py-12">
+      <div className="container mx-auto px-6">
         {/* Main Benefits */}
-        <div className="text-center mb-20">
-          <Badge variant="outline" className="mb-4 px-4 py-2">
+        <div className="text-center mb-24">
+          <Badge variant="outline-lg" className="mb-6 ">
             Benefits
           </Badge>
-          <h2 className="section-title mb-8 bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent text-center">
+          <h2 className="section-title mb-12 bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent text-center">
             Competitive Advantages
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300  text-center leading-relaxed">
+          <p className="text-xl md:text-2xl text-slate-600 dark:text-gray-300 text-center leading-relaxed max-w-4xl mx-auto">
             VeFlow offers unique advantages at every level: from infrastructure to user experience
           </p>
         </div>
@@ -124,7 +124,7 @@ export function Benefits() {
             return (
               <Card 
                 key={index} 
-                className="group hover:shadow-2xl transition-all duration-300 border-0 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 hover:-translate-y-2"
+                className="group hover:shadow-2xl transition-all duration-300 border-0 bg-gradient-to-br from-white to-slate-50 dark:from-gray-800 dark:to-gray-900 hover:-translate-y-2 shadow-sm"
               >
                 <CardContent className="p-8">
                   <div className="flex items-start mb-6">
@@ -132,13 +132,13 @@ export function Benefits() {
                       <Icon className="w-8 h-8" />
                     </div>
                     <div>
-                      <h3 className="card-subtitle mb-3 text-gray-900 dark:text-white">
+                      <h3 className="card-subtitle mb-3 text-slate-900 dark:text-white">
                         {benefit.title}
                       </h3>
-                      <p className="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-3">
+                      <p className="text-lg font-semibold text-blue-700 dark:text-blue-400 mb-3">
                         {benefit.subtitle}
                       </p>
-                      <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                      <p className="text-slate-600 dark:text-gray-300 leading-relaxed">
                         {benefit.description}
                       </p>
                     </div>
@@ -148,7 +148,7 @@ export function Benefits() {
                     {benefit.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-start">
                         <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-700 dark:text-gray-300">{feature}</span>
+                        <span className="text-slate-700 dark:text-gray-300">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -159,14 +159,14 @@ export function Benefits() {
         </div>
 
         {/* Competitive Advantages */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-20 py-6">
           <Badge variant="outline" className="mb-4 px-4 py-2">
             Comparison
           </Badge>
           <h3 className="subsection-title mb-8 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent text-center">
             Advantages Over Competitors
           </h3>
-          <p className="text-xl text-gray-600 dark:text-gray-300  text-center leading-relaxed">
+          <p className="text-xl text-slate-600 dark:text-gray-300  text-center leading-relaxed">
             VeFlow outperforms existing solutions at all levels
           </p>
         </div>
@@ -184,7 +184,7 @@ export function Benefits() {
                     <div className="p-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 text-white mr-4 flex-shrink-0">
                       <Icon className="w-6 h-6" />
                     </div>
-                    <h4 className="card-title text-gray-900 dark:text-white">
+                    <h4 className="card-title text-slate-900 dark:text-white">
                       {comparison.category}
                     </h4>
                   </div>
@@ -193,7 +193,7 @@ export function Benefits() {
                     {comparison.advantages.map((advantage, advIndex) => (
                       <div key={advIndex} className="flex items-start">
                         <ArrowRight className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-700 dark:text-gray-300">{advantage}</span>
+                        <span className="text-slate-700 dark:text-gray-300">{advantage}</span>
                       </div>
                     ))}
                   </div>

@@ -14,12 +14,16 @@ export interface BlueprintMetadata {
   description: string
   category: string
   tags: string[]
-  inputs: BlueprintInput[]
-  outputs: BlueprintOutput[]
+  inputs?: BlueprintInput[]
+  outputs?: BlueprintOutput[]
   icon?: string
   color?: string
   complexity: 'simple' | 'medium' | 'complex'
   estimatedGas?: number
+  author?: string
+  createdAt?: string
+  updatedAt?: string
+  active?: boolean
 }
 
 export interface BlueprintInput {

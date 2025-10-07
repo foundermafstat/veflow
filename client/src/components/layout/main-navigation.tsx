@@ -11,7 +11,8 @@ import {
   BookOpen, 
   AlertCircle, 
   Bell, 
-  Clock 
+  Clock,
+  Code
 } from 'lucide-react'
 
 const mainNavItems = [
@@ -44,6 +45,11 @@ const mainNavItems = [
     title: 'Telegram',
     href: '/telegram',
     icon: MessageSquare
+  },
+  {
+    title: 'Smart Contracts',
+    href: '/smart-contract-blueprints-demo',
+    icon: Code
   },
   {
     title: 'Settings',

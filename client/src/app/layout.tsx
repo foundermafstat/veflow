@@ -83,7 +83,7 @@ export default function RootLayout({
 					}}
 				/>
 			</head>
-			<body suppressHydrationWarning={true} className="min-h-screen bg-background text-text">
+			<body suppressHydrationWarning={true} className="min-h-screen bg-background text-foreground">
 				{/* Theme Provider */}
 				<ThemeProvider
 					attribute="class"

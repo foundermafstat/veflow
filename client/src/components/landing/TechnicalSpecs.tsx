@@ -133,22 +133,22 @@ const roadmap = [
 export function TechnicalSpecs() {
   return (
     <section className="py-24 bg-white dark:bg-gray-800">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 py-12">
         {/* Technical Specs Header */}
         <div className="text-center mb-20">
           <Badge variant="outline" className="mb-4 px-4 py-2">
             Technical Specifications
           </Badge>
-          <h2 className="section-title mb-8 bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent text-center">
+          <h2 className="section-title mb-8 bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent text-center">
             Technical Architecture
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300  text-center leading-relaxed">
+          <p className="text-xl text-slate-600 dark:text-gray-300  text-center leading-relaxed">
             Enterprise-level performance, security, and scalability
           </p>
         </div>
 
         {/* Technical Specifications */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-24 pt-6">
           {technicalSpecs.map((spec, index) => {
             const Icon = spec.icon;
             return (
@@ -160,10 +160,10 @@ export function TechnicalSpecs() {
                   <div className={`p-4 rounded-2xl bg-gradient-to-r ${spec.gradient} text-white mb-4 w-fit`}>
                     <Icon className="w-8 h-8" />
                   </div>
-                  <CardTitle className="card-subtitle text-gray-900 dark:text-white">
+                  <CardTitle className="card-subtitle text-slate-900 dark:text-white">
                     {spec.title}
                   </CardTitle>
-                  <CardDescription className="text-gray-600 dark:text-gray-300 text-lg">
+                  <CardDescription className="text-slate-600 dark:text-gray-300 text-lg">
                     {spec.description}
                   </CardDescription>
                 </CardHeader>
@@ -172,7 +172,7 @@ export function TechnicalSpecs() {
                     {spec.specs.map((item, itemIndex) => (
                       <li key={itemIndex} className="flex items-start">
                         <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-700 dark:text-gray-300">{item}</span>
+                        <span className="text-slate-700 dark:text-gray-300">{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -183,14 +183,14 @@ export function TechnicalSpecs() {
         </div>
 
         {/* Contract Addresses */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-20 pt-6">
           <Badge variant="outline" className="mb-4 px-4 py-2">
             Contracts
           </Badge>
           <h3 className="subsection-title mb-8 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent text-center">
             Smart Contract Addresses
           </h3>
-          <p className="text-xl text-gray-600 dark:text-gray-300  text-center leading-relaxed">
+          <p className="text-xl text-slate-600 dark:text-gray-300  text-center leading-relaxed">
             Fully deployed system on VeChain testnet
           </p>
         </div>
@@ -205,11 +205,11 @@ export function TechnicalSpecs() {
                 <h4 className="font-bold text-lg mb-3 text-blue-900 dark:text-blue-100">
                   {contract.name}
                 </h4>
-                <p className="text-gray-700 dark:text-gray-300 mb-4 text-sm leading-relaxed">
+                <p className="text-slate-700 dark:text-gray-300 mb-4 text-sm leading-relaxed">
                   {contract.description}
                 </p>
-                <div className="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg">
-                  <code className="text-xs font-mono text-gray-800 dark:text-gray-200 break-all">
+                <div className="bg-slate-100 dark:bg-gray-800 p-3 rounded-lg">
+                  <code className="text-xs font-mono text-slate-800 dark:text-gray-200 break-all">
                     {contract.address}
                   </code>
                 </div>
@@ -219,14 +219,14 @@ export function TechnicalSpecs() {
         </div>
 
         {/* Roadmap */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-20 pt-6">
           <Badge variant="outline" className="mb-4 px-4 py-2">
             Roadmap
           </Badge>
           <h3 className="subsection-title mb-8 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent text-center">
             Development Roadmap
           </h3>
-          <p className="text-xl text-gray-600 dark:text-gray-300  text-center leading-relaxed">
+          <p className="text-xl text-slate-600 dark:text-gray-300  text-center leading-relaxed">
             Phased platform development with focus on innovation
           </p>
         </div>
@@ -235,28 +235,28 @@ export function TechnicalSpecs() {
           {roadmap.map((phase, index) => (
             <Card 
               key={index} 
-              className={`group hover:shadow-xl transition-all duration-300 border-2 ${
+              className={`roadmap-card group hover:shadow-xl transition-all duration-300 border-2 ${
                 phase.status === 'completed' 
-                  ? 'border-green-200 dark:border-green-800 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20'
+                  ? 'roadmap-completed'
                   : phase.status === 'in-progress'
-                  ? 'border-blue-200 dark:border-blue-800 bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20'
-                  : 'border-gray-200 dark:border-gray-700 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900'
+                  ? 'roadmap-in-progress'
+                  : 'roadmap-planned'
               }`}
             >
               <CardContent className="p-8">
                 <div className="flex items-center justify-between mb-6">
-                  <h4 className="card-subtitle text-gray-900 dark:text-white">
+                  <h4 className="card-subtitle text-slate-900 dark:text-white">
                     {phase.phase}
                   </h4>
                   <Badge 
                     variant={phase.status === 'completed' ? 'default' : phase.status === 'in-progress' ? 'secondary' : 'outline'}
-                    className={
+                    className={`roadmap-badge ${
                       phase.status === 'completed' 
-                        ? 'bg-green-500 text-white' 
+                        ? 'roadmap-badge-completed' 
                         : phase.status === 'in-progress'
-                        ? 'bg-blue-500 text-white'
-                        : ''
-                    }
+                        ? 'roadmap-badge-in-progress'
+                        : 'roadmap-badge-planned'
+                    }`}
                   >
                     {phase.status === 'completed' ? 'Completed' : phase.status === 'in-progress' ? 'In Progress' : 'Planned'}
                   </Badge>
@@ -268,7 +268,7 @@ export function TechnicalSpecs() {
                       <CheckCircle className={`w-5 h-5 mr-3 flex-shrink-0 ${
                         phase.status === 'completed' ? 'text-green-500' : 'text-gray-400'
                       }`} />
-                      <span className="text-gray-700 dark:text-gray-300">{feature}</span>
+                      <span className="roadmap-feature-text">{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -278,24 +278,24 @@ export function TechnicalSpecs() {
         </div>
 
         {/* Deployer Info */}
-        <div className="mt-16 text-center">
-          <Card className="max-w-2xl mx-auto border border-purple-200 dark:border-purple-800 bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20">
+        <div className="mt-16 text-center pt-6">
+          <Card className="deployer-card">
             <CardContent className="p-8">
-              <h4 className="card-title text-purple-900 dark:text-purple-100 mb-4 text-center">
+              <h4 className="deployer-title">
                 Deployer Address
               </h4>
-              <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg">
-                <code className="text-sm font-mono text-gray-800 dark:text-gray-200">
+              <div className="deployer-code-container">
+                <code className="deployer-code">
                   0x783DE01F06b4F2a068A7b3Bb6ff3db821A08f8c1
                 </code>
               </div>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mt-4">
+              <p className="deployer-explorer-text">
                 VeChain Explorer: 
                 <a 
                   href="https://explore-testnet.vechain.org/transactions/0x2ac7e4ea0a23ce7cac2d9681fcc7cb489549387b"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-600 dark:text-blue-400 hover:underline ml-2"
+                  className="deployer-explorer-link"
                 >
                   View on VeChain Explorer
                 </a>

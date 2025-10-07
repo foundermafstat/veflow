@@ -1,13 +1,19 @@
 import { Flow, FlowExecution } from '@/types/flow.types';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3002';
+// Use relative URLs for API routes instead of external server
+const getApiUrl = () => {
+  if (typeof window !== 'undefined') {
+    return window.location.origin;
+  }
+  return process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+};
 
 /**
  * Fetch all flows for a user
  */
 export async function fetchFlows(userId: string): Promise<{ flows: Flow[], total: number }> {
   try {
-    const response = await fetch(`${API_URL}/api/flows?userId=${userId}`);
+    const response = await fetch(`${getApiUrl()}/api/flows?userId=${userId}`);
     
     if (!response.ok) {
       throw new Error(`API error: ${response.status}`);
@@ -25,7 +31,7 @@ export async function fetchFlows(userId: string): Promise<{ flows: Flow[], total
  */
 export async function fetchFlow(flowId: string, userId: string): Promise<Flow> {
   try {
-    const response = await fetch(`${API_URL}/api/flows/${flowId}?userId=${userId}`);
+    const response = await fetch(`${getApiUrl()}/api/flows/${flowId}?userId=${userId}`);
     
     if (!response.ok) {
       throw new Error(`API error: ${response.status}`);
@@ -43,7 +49,7 @@ export async function fetchFlow(flowId: string, userId: string): Promise<Flow> {
  */
 export async function createFlow(flow: Partial<Flow>, userId: string): Promise<Flow> {
   try {
-    const response = await fetch(`${API_URL}/api/flows?userId=${userId}`, {
+    const response = await fetch(`${getApiUrl()}/api/flows?userId=${userId}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -67,7 +73,7 @@ export async function createFlow(flow: Partial<Flow>, userId: string): Promise<F
  */
 export async function updateFlow(flowId: string, updates: Partial<Flow>, userId: string): Promise<Flow> {
   try {
-    const response = await fetch(`${API_URL}/api/flows/${flowId}?userId=${userId}`, {
+    const response = await fetch(`${getApiUrl()}/api/flows/${flowId}?userId=${userId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -91,7 +97,7 @@ export async function updateFlow(flowId: string, updates: Partial<Flow>, userId:
  */
 export async function deleteFlow(flowId: string, userId: string): Promise<{ message: string }> {
   try {
-    const response = await fetch(`${API_URL}/api/flows/${flowId}?userId=${userId}`, {
+    const response = await fetch(`${getApiUrl()}/api/flows/${flowId}?userId=${userId}`, {
       method: 'DELETE',
     });
     
@@ -137,7 +143,7 @@ export async function executeFlow(flowId: string, userId: string, triggerData?: 
     const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
     
     try {
-      const response = await fetch(`${API_URL}/api/flows/${flowId}/execute?userId=${userId}`, {
+      const response = await fetch(`${getApiUrl()}/api/flows/${flowId}/execute?userId=${userId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -244,7 +250,7 @@ export async function fetchFlowExecutions(
     
     try {
       const response = await fetch(
-        `${API_URL}/api/flows/${flowId}/executions?userId=${userId}&page=${page}&limit=${limit}`,
+        `${getApiUrl()}/api/flows/${flowId}/executions?userId=${userId}&page=${page}&limit=${limit}`,
         { signal: controller.signal }
       );
       
@@ -274,7 +280,7 @@ export async function fetchFlowExecutions(
  */
 export async function toggleFlowStatus(flowId: string, userId: string): Promise<Flow> {
   try {
-    const response = await fetch(`${API_URL}/api/flows/${flowId}/toggle?userId=${userId}`, {
+    const response = await fetch(`${getApiUrl()}/api/flows/${flowId}/toggle?userId=${userId}`, {
       method: 'PATCH',
     });
     

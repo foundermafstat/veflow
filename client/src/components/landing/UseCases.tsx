@@ -106,23 +106,23 @@ const nodeTypes = [
 
 export function UseCases() {
   return (
-    <section className="py-24 bg-gray-50 dark:bg-gray-900/50">
-      <div className="container mx-auto px-4">
+    <section className="py-24 bg-slate-50 dark:bg-gray-900/50">
+      <div className="container mx-auto px-4 py-12">
         {/* Use Cases Header */}
         <div className="text-center mb-20">
           <Badge variant="outline" className="mb-4 px-4 py-2">
             Use Cases
           </Badge>
-          <h2 className="section-title mb-8 bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent text-center">
+          <h2 className="section-title mb-8 bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent text-center">
             Real-World Use Cases
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 text-center leading-relaxed">
+          <p className="text-xl text-slate-600 dark:text-gray-300 text-center leading-relaxed">
             From supply chain automation to DeFi strategies - VeFlow opens new possibilities for every sector
           </p>
         </div>
 
         {/* Use Cases Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-24 py-6">
           {useCases.map((useCase, index) => {
             const Icon = useCase.icon;
             return (
@@ -139,10 +139,10 @@ export function UseCases() {
                       {useCase.badge}
                     </Badge>
                   </div>
-                  <CardTitle className="card-subtitle mb-4 text-gray-900 dark:text-white">
+                  <CardTitle className="card-subtitle mb-4 text-slate-900 dark:text-white">
                     {useCase.title}
                   </CardTitle>
-                  <CardDescription className="text-lg text-gray-600 dark:text-gray-300">
+                  <CardDescription className="text-lg text-slate-600 dark:text-gray-300">
                     {useCase.description}
                   </CardDescription>
                 </CardHeader>
@@ -150,9 +150,9 @@ export function UseCases() {
                 <CardContent className="space-y-6">
                   {/* Workflow */}
                   <div>
-                    <h4 className="text-xl font-black text-gray-900 dark:text-white mb-3 text-center">Workflow:</h4>
-                    <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
-                      <code className="text-sm text-gray-800 dark:text-gray-200 font-mono">
+                    <h4 className="text-xl font-black text-slate-900 dark:text-white mb-3 text-center">Workflow:</h4>
+                    <div className="bg-slate-100 dark:bg-gray-700 p-4 rounded-lg">
+                      <code className="text-sm text-slate-800 dark:text-gray-200 font-mono">
                         {useCase.workflow[0]}
                       </code>
                     </div>
@@ -160,10 +160,10 @@ export function UseCases() {
 
                   {/* Features */}
                   <div>
-                    <h4 className="text-xl font-black text-gray-900 dark:text-white mb-3 text-center">Features:</h4>
+                    <h4 className="text-xl font-black text-slate-900 dark:text-white mb-3 text-center">Features:</h4>
                     <ul className="space-y-2">
                       {useCase.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-center text-gray-700 dark:text-gray-300">
+                        <li key={featureIndex} className="flex items-center text-slate-700 dark:text-gray-300">
                           <ArrowRight className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
                           {feature}
                         </li>
@@ -185,14 +185,14 @@ export function UseCases() {
         </div>
 
         {/* Node Types */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 pt-12">
           <Badge variant="outline" className="mb-4 px-4 py-2">
             Components
           </Badge>
           <h3 className="subsection-title mb-8 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent text-center">
             Node Types
           </h3>
-          <p className="text-xl text-gray-600 dark:text-gray-300  text-center leading-relaxed">
+          <p className="text-xl text-slate-600 dark:text-gray-300  text-center leading-relaxed">
             Rich set of pre-built nodes for creating any scenarios
           </p>
         </div>
@@ -209,10 +209,10 @@ export function UseCases() {
                   <div className="p-4 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-500 text-white mx-auto mb-4 w-fit">
                     <Icon className="w-8 h-8" />
                   </div>
-                  <h4 className="text-xl font-black mb-2 text-gray-900 dark:text-white">
+                  <h4 className="text-xl font-black mb-2 text-slate-900 dark:text-white">
                     {node.name}
                   </h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                  <p className="text-sm text-slate-600 dark:text-gray-300 leading-relaxed">
                     {node.description}
                   </p>
                 </CardContent>
@@ -223,7 +223,7 @@ export function UseCases() {
 
         {/* Additional Node Types */}
         <div className="mt-8 text-center">
-          <p className="text-gray-600 dark:text-gray-300 mb-4">
+          <p className="text-slate-600 dark:text-gray-300 mb-4">
             And 4+ more node types: Timer, Notification, Text Input, Domain Trigger
           </p>
           <Button 

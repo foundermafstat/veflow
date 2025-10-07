@@ -13,13 +13,6 @@ import {
 	MenuButton,
 	MenuItem,
 	MenuList,
-	useDisclosure,
-	Drawer,
-	DrawerBody,
-	DrawerCloseButton,
-	DrawerContent,
-	DrawerHeader,
-	DrawerOverlay,
 	VStack,
 	Divider,
 	Text,
@@ -30,15 +23,9 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { useColorMode } from '@chakra-ui/react';
-import { LanguageSelector } from '@/app/components/features/LanguageSelector';
-import { WalletAvatar } from '@/components/WalletAvatar';
 import { Button as UIButton } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { 
 	ChevronDown, 
-	Menu, 
-	X,
 	Home,
 	Workflow,
 	LayoutDashboard,
@@ -53,23 +40,13 @@ function WalletSection(): ReactElement {
 	try {
 		const { account } = useWallet();
 		return (
-			<div className="flex items-center space-x-2">
-				{/* Wallet Avatar */}
-				{account && (
-					<Avatar className="h-8 w-8 ring-2 ring-primary/20">
-						<AvatarImage src="/avatar-fallback.svg" alt="Wallet" />
-						<AvatarFallback className="bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-medium">
-							{account.address.slice(0, 2).toUpperCase()}
-						</AvatarFallback>
-					</Avatar>
-				)}
-				
+			<div className="flex items-center">
 				{/* Wallet Button */}
 				<WalletButton
 					mobileVariant="iconOnly"
 					desktopVariant="iconDomainAndAssets"
+					className="wallet-button"
 				/>
-
 			</div>
 		);
 	} catch (error) {
@@ -79,7 +56,6 @@ function WalletSection(): ReactElement {
 }
 
 export function Header(): ReactElement {
-	const { isOpen, onOpen, onClose } = useDisclosure();
 	const [isScrolled, setIsScrolled] = useState(false);
 	const { colorMode } = useColorMode();
 
@@ -130,23 +106,29 @@ export function Header(): ReactElement {
 						: 'bg-background/95 backdrop-blur-md'
 				}`}
 			>
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="h-16 flex items-center justify-between">
+				<div className="w-full flex justify-center">
+					<div className="max-w-7xl w-full px-4 sm:px-6 lg:px-8">
+						<div className="h-16 flex items-center justify-between">
 						{/* Logo */}
 						<Link href="/">
-							<div className="cursor-pointer hover:scale-105 transition-transform duration-200">
+							<div className="cursor-pointer transition-transform duration-200">
+								{/* Dark logo for light theme */}
 								<Image
-									src={colorMode === 'dark' ? '/veflow-white.png' : '/veflow-black.png'}
+									src="/veflow-black.png"
 									alt="VeFlow"
-									height="32px"
-									width="auto"
-									fallbackSrc="/veflow-black.svg"
+									className="h-8 w-auto max-w-32 max-h-8 logo-dark"
+								/>
+								{/* Light logo for dark theme */}
+								<Image
+									src="/veflow-white.png"
+									alt="VeFlow"
+									className="h-8 w-auto max-w-32 max-h-8 logo-light"
 								/>
 							</div>
 						</Link>
 
 						{/* Desktop Navigation */}
-						<nav className="hidden lg:flex pl-5 items-center space-x-1">
+						<nav className="hidden lg:flex pl-10 items-center space-x-1">
 							{navItems.map((item) => (
 								<div key={item.label}>
 									{item.children ? (
@@ -157,8 +139,10 @@ export function Header(): ReactElement {
 												size="sm"
 												className="hover:bg-accent hover:text-accent-foreground transition-all duration-200 rounded-md p-4 h-9 flex items-center space-x-2"
 											>
-												<span className="text-sm">{item.label} <ChevronDown className="w-3 h-3" /></span>
-												
+												<span className="text-sm flex items-center space-x-1">
+													<span>{item.label}</span>
+													<ChevronDown className="w-3 h-3" />
+												</span>
 											</MenuButton>
 											<MenuList 
 												className="min-w-[280px] bg-popover border border-border shadow-lg rounded-lg p-2"
@@ -209,114 +193,13 @@ export function Header(): ReactElement {
 							<ThemeToggle />
 							</div>
 
-							{/* Language selector */}
-							<div className="hidden sm:block">
-							<LanguageSelector />
-							</div>
-
 							{/* Wallet Button */}
 							<WalletSection />
-
-							{/* Mobile menu button */}
-							<IconButton
-								aria-label="Open menu"
-								onClick={onOpen}
-								variant="ghost"
-								size="sm"
-								className="flex lg:hidden hover:bg-accent hover:text-accent-foreground transition-all duration-200 rounded-md ml-2"
-							>
-								<Menu className="w-5 h-5" />
-							</IconButton>
+						</div>
 						</div>
 					</div>
 				</div>
 			</header>
-
-			{/* Mobile Drawer */}
-			<Drawer isOpen={isOpen} placement="right" onClose={onClose}>
-				<DrawerOverlay />
-				<DrawerContent className="glass-effect border-l border-border">
-					<DrawerCloseButton className="text-muted-foreground hover:text-foreground" />
-					<DrawerHeader className="border-b border-border">
-						<Box className="flex items-center space-x-3">
-							<Image
-								src={colorMode === 'dark' ? '/veflow-white.png' : '/veflow-black.png'}
-								alt="VeFlow"
-								height="32px"
-								width="auto"
-								fallbackSrc="/veflow-black.png"
-							/>
-							<span className="text-lg font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-								VeFlow
-							</span>
-						</Box>
-					</DrawerHeader>
-
-					<DrawerBody className="px-4">
-						<VStack className="space-y-4 items-stretch">
-							{/* Wallet Status */}
-							<WalletSection />
-
-							<Divider />
-
-							{/* Navigation Links */}
-							{navItems.map((item) => (
-								<div key={item.label}>
-									{item.children ? (
-										<div className="space-y-2">
-											<div className="text-sm font-semibold text-muted-foreground uppercase tracking-wide px-3">
-												{item.label}
-											</div>
-											{item.children.map((child) => {
-												const Icon = child.icon;
-												return (
-													<Link key={child.href} href={child.href} onClick={onClose}>
-														<div className="flex items-start space-x-3 p-3 rounded-lg hover:bg-accent transition-colors">
-															<div className="flex-shrink-0 mt-0.5">
-																<Icon className="w-5 h-5 text-muted-foreground" />
-															</div>
-															<div className="flex-1 min-w-0">
-																<div className="font-medium text-sm text-foreground">
-																	{child.label}
-																</div>
-																<div className="text-xs text-muted-foreground mt-1">
-																	{child.description}
-																</div>
-															</div>
-														</div>
-													</Link>
-												);
-											})}
-										</div>
-									) : (
-										<Link href={item.href} onClick={onClose}>
-									<UIButton
-										variant="ghost"
-										size="lg"
-										className="w-full justify-start hover:bg-accent hover:text-accent-foreground transition-all duration-200 rounded-md"
-									>
-										{item.label}
-									</UIButton>
-								</Link>
-									)}
-								</div>
-							))}
-
-							<Divider />
-
-							{/* Theme Toggle */}
-							<Box onClick={onClose}>
-								<ThemeToggle />
-							</Box>
-
-							{/* Language Selector */}
-							<Box onClick={onClose}>
-								<LanguageSelector />
-							</Box>
-						</VStack>
-					</DrawerBody>
-				</DrawerContent>
-			</Drawer>
 		</>
 	);
 }

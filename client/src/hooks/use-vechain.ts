@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import { getVeChainProvider, VeChainNetwork, VeChainUtils } from '@/lib/vechain-provider'
-import { useToast } from '@/components/ui/toast-notification'
+import { useToast } from '@/hooks/use-toast'
 
 interface UseVeChainReturn {
   // Provider state

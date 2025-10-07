@@ -22,12 +22,12 @@ export function CTA() {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse delay-500" />
       </div>
 
-      <div className="relative z-10 container mx-auto px-4">
+      <div className="relative z-10 container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto text-center">
           {/* Badge */}
           <Badge 
-            variant="secondary" 
-            className="mb-6 px-6 py-3 text-base font-medium bg-white/20 backdrop-blur-sm border-white/30 text-white"
+            variant="glass-lg" 
+            className="mb-6"
           >
             <Sparkles className="w-5 h-5 mr-2" />
             Ready to Start?
@@ -42,16 +42,16 @@ export function CTA() {
             </span>
           </h2>
           
-          <p className="text-xl md:text-2xl text-blue-100 mb-12 leading-relaxed text-center mx:auto">
+          <p className="cta-description">
             Join the revolution of visual blockchain programming. 
             Build complex applications without writing code.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-8 justify-center items-center mb-16">
+          <div className="cta-buttons">
             <Button 
               size="lg" 
-              className="px-10 py-5 text-xl font-bold bg-white text-blue-600 hover:bg-gray-100 shadow-2xl hover:shadow-3xl transform hover:-translate-y-2 transition-all duration-300 border-0"
+              className="cta-primary-button"
             >
               <Rocket className="mr-3 w-6 h-6" />
               Start Building
@@ -61,7 +61,7 @@ export function CTA() {
             <Button 
               variant="outline" 
               size="lg" 
-              className="px-10 py-5 text-xl font-bold border-2 border-white/50 text-white hover:bg-white/10 hover:border-white backdrop-blur-sm transition-all duration-300"
+              className="cta-secondary-button"
             >
               <Play className="mr-3 w-6 h-6" />
               Watch Demo
@@ -69,11 +69,11 @@ export function CTA() {
           </div>
 
           {/* Additional Actions */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center text-white/80">
+          <div className="cta-additional-actions">
             <Button 
               variant="ghost" 
               size="lg" 
-              className="text-white hover:text-white hover:bg-white/10 transition-all duration-300"
+              className="cta-ghost-button"
             >
               <Github className="mr-2 w-5 h-5" />
               GitHub
@@ -82,26 +82,26 @@ export function CTA() {
             <Button 
               variant="ghost" 
               size="lg" 
-              className="text-white hover:text-white hover:bg-white/10 transition-all duration-300"
+              className="cta-ghost-button"
             >
               <MessageCircle className="mr-2 w-5 h-5" />
-              Сообщество
+              Community
             </Button>
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 max-w-2xl mx-auto">
-            <div className="text-center">
-              <div className="text-4xl font-bold text-white mb-2">6</div>
-              <div className="text-sm text-blue-200">Smart Contracts</div>
+          <div className="cta-stats">
+            <div className="cta-stat-item">
+              <div className="cta-stat-number">6</div>
+              <div className="cta-stat-label">Smart Contracts</div>
             </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-white mb-2">8+</div>
-              <div className="text-sm text-blue-200">Node Types</div>
+            <div className="cta-stat-item">
+              <div className="cta-stat-number">8+</div>
+              <div className="cta-stat-label">Node Types</div>
             </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-white mb-2">∞</div>
-              <div className="text-sm text-blue-200">Possibilities</div>
+            <div className="cta-stat-item">
+              <div className="cta-stat-number">∞</div>
+              <div className="cta-stat-label">Possibilities</div>
             </div>
           </div>
         </div>

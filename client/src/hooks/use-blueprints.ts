@@ -4,6 +4,8 @@ import { useState, useEffect, useCallback } from 'react'
 import { BlueprintWithMetadata, CreateFlowData } from '@/types/blueprint.types'
 import { useBlueprintAPI } from '@/lib/blueprint-api'
 import { VeChainNetwork } from '@/lib/vechain-provider'
+import { useVeFlowContract } from './use-veflow-contract'
+import { useBlueprintMetadata } from './use-blueprint-metadata'
 
 interface UseBlueprintsReturn {
   blueprints: BlueprintWithMetadata[]
@@ -26,6 +28,8 @@ export function useBlueprints(network: VeChainNetwork = 'testnet'): UseBlueprint
   const [selectedBlueprintIds, setSelectedBlueprintIds] = useState<number[]>([])
 
   const blueprintAPI = useBlueprintAPI(network)
+  const veFlowContract = useVeFlowContract(network)
+  const { getMetadata } = useBlueprintMetadata()
 
   // Load blueprints on mount
   useEffect(() => {
@@ -36,15 +40,63 @@ export function useBlueprints(network: VeChainNetwork = 'testnet'): UseBlueprint
     try {
       setLoading(true)
       setError(null)
-      const fetchedBlueprints = await blueprintAPI.getAllBlueprints()
-      setBlueprints(fetchedBlueprints)
+      
+      // Load blueprints from API
+      const apiBlueprints = await blueprintAPI.getAllBlueprints()
+      
+      // Load blueprints from smart contract
+      const contractBlueprints: BlueprintWithMetadata[] = []
+      if (veFlowContract.isConnected && veFlowContract.blueprints.length > 0) {
+        for (const contractBlueprint of veFlowContract.blueprints) {
+          try {
+            const metadata = await getMetadata(contractBlueprint.metadataURI)
+            if (metadata) {
+              contractBlueprints.push({
+                id: contractBlueprint.id,
+                version: contractBlueprint.version,
+                metadata: {
+                  ...metadata,
+                  author: contractBlueprint.author,
+                  createdAt: new Date(contractBlueprint.createdAt * 1000).toISOString(),
+                  updatedAt: new Date(contractBlueprint.createdAt * 1000).toISOString(),
+                  active: contractBlueprint.active
+                }
+              })
+            }
+          } catch (err) {
+            console.warn(`Failed to load metadata for blueprint ${contractBlueprint.id}:`, err)
+            // Still add the blueprint with default metadata
+            contractBlueprints.push({
+              id: contractBlueprint.id,
+              version: contractBlueprint.version,
+              metadata: {
+                name: `Smart Contract Blueprint #${contractBlueprint.id}`,
+                description: 'Blueprint from VeFlow smart contract',
+                category: 'smart-contract',
+                tags: ['smart-contract', 'on-chain'],
+                complexity: 'medium',
+                color: 'blue',
+                icon: 'settings',
+                author: contractBlueprint.author,
+                createdAt: new Date(contractBlueprint.createdAt * 1000).toISOString(),
+                updatedAt: new Date(contractBlueprint.createdAt * 1000).toISOString(),
+                active: contractBlueprint.active
+              }
+            })
+          }
+        }
+      }
+      
+      // Combine API blueprints and smart contract blueprints
+      const allBlueprints = [...apiBlueprints, ...contractBlueprints]
+      setBlueprints(allBlueprints)
     } catch (err) {
       console.error('Error loading blueprints:', err)
       setError(err instanceof Error ? err.message : 'Failed to load blueprints')
     } finally {
       setLoading(false)
     }
-  }, [blueprintAPI])
+  }, [blueprintAPI, veFlowContract, getMetadata])
 
   const selectBlueprint = useCallback((blueprint: BlueprintWithMetadata) => {
     setSelectedBlueprints(prev => {

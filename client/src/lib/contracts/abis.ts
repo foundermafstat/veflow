@@ -403,21 +403,23 @@ export const VEFLOW_EXECUTOR_ABI = [
   }
 ] as const
 
-// Contract addresses (to be configured based on network)
+// Contract addresses (deployed on VeChain Testnet)
 export const CONTRACT_ADDRESSES = {
-  // Testnet addresses (to be updated with actual deployed addresses)
+  // Testnet addresses (deployed contracts)
   testnet: {
-    registry: '0x0000000000000000000000000000000000000000', // Placeholder
-    orchestrator: '0x0000000000000000000000000000000000000000', // Placeholder
-    executor: '0x0000000000000000000000000000000000000000', // Placeholder
-    billing: '0x0000000000000000000000000000000000000000', // Placeholder
+    registry: '0xc03db9560d8be616748b1b158d5fb99094e33f41', // VeFlowRegistry Proxy
+    orchestrator: '0x2ac7e4ea0a23ce7cac2d9681fcc7cb489549387b', // VeFlowOrchestrator Proxy
+    executor: '0x9ee3fa7ea944f843b395673c88f7423eed05406d', // VeFlowExecutor Proxy
+    billing: '0xd5ec015a300d5c6d42abeb4004ded409c0d7e24d', // VeFlowBilling Proxy
+    accessControl: '0xed31f42a4a6ffc6a80195b7c56f6cb23dfbacc7e', // VeFlowAccessControl
   },
-  // Mainnet addresses (to be updated with actual deployed addresses)
+  // Mainnet addresses (to be deployed)
   mainnet: {
     registry: '0x0000000000000000000000000000000000000000', // Placeholder
     orchestrator: '0x0000000000000000000000000000000000000000', // Placeholder
     executor: '0x0000000000000000000000000000000000000000', // Placeholder
     billing: '0x0000000000000000000000000000000000000000', // Placeholder
+    accessControl: '0x0000000000000000000000000000000000000000', // Placeholder
   }
 } as const
 

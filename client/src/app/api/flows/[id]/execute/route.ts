@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/lib/auth';
-import { executeFlow } from '@/app/api/flows';
 
 export async function POST(
   request: NextRequest,
@@ -14,7 +13,20 @@ export async function POST(
 
     const { id } = await params;
     const body = await request.json();
-    const result = await executeFlow(id, session.user.id, body.triggerData);
+    
+    // Mock execution result
+    const result = {
+      message: 'Flow execution started (mock)',
+      flowId: id,
+      triggerData: body.triggerData || {
+        type: 'manual_trigger',
+        timestamp: new Date().toISOString(),
+        testMode: true
+      },
+      executionId: `mock-exec-${Date.now()}`,
+      status: 'running'
+    };
+
     return NextResponse.json(result);
   } catch (error) {
     console.error('Error executing flow:', error);

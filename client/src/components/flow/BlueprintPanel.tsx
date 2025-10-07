@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import { useBlueprints } from '@/hooks/use-blueprints'
 import CreateFlowDialog from './CreateFlowDialog'
-import { useToast } from '@/components/ui/toast-notification'
+import { useToast } from '@/hooks/use-toast'
 import { useVeChain } from '@/hooks/use-vechain'
 import { WalletStatus } from '@/components/vechain/WalletConnect'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -25,7 +25,8 @@ import {
   Settings,
   Bot,
   FileText,
-  Workflow
+  Workflow,
+  Code
 } from "lucide-react"
 import { BlueprintWithMetadata, BlueprintPanelProps } from '@/types/blueprint.types'
 
@@ -167,7 +168,8 @@ const categoryIcons = {
   messaging: Bot,
   file: FileText,
   automation: Workflow,
-  analytics: Settings
+  analytics: Settings,
+  'smart-contract': Code
 }
 
 const complexityColors = {

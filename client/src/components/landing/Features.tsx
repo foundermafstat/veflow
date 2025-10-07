@@ -89,45 +89,45 @@ const smartContractFeatures = [
 
 export function Features() {
   return (
-    <section className="py-24 bg-gray-50 dark:bg-gray-900/50">
-      <div className="container mx-auto px-4">
+    <section className="section-spacing bg-slate-50 dark:bg-gray-900/50">
+      <div className="container mx-auto px-6">
         {/* Main Features */}
-        <div className="text-center mb-20">
-          <Badge variant="outline" className="mb-4 px-4 py-2">
+        <div className="text-center mb-24 py-6">
+          <Badge variant="outline-lg" className="mb-6">
             Features
           </Badge>
-          <h2 className="section-title mb-8 bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent text-center">
+          <h2 className="section-title mb-12 bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent text-center">
             Revolutionary Features
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300  text-center leading-relaxed">
+          <p className="text-xl md:text-2xl text-slate-600 dark:text-gray-300 text-center leading-relaxed max-w-4xl mx-auto">
             VeFlow introduces a new approach to blockchain application development, 
             combining visual programming with AI automation
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
               <Card 
                 key={index} 
-                className="group hover:shadow-xl transition-all duration-300 border-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm hover:-translate-y-2"
+                className="group hover:shadow-xl transition-all duration-300 border-0 bg-white/90 dark:bg-gray-800/80 backdrop-blur-sm hover:-translate-y-2 p-6 shadow-sm"
               >
-                <CardHeader className="pb-4">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className={`p-3 rounded-xl bg-gradient-to-r ${feature.gradient} text-white`}>
-                      <Icon className="w-6 h-6" />
+                <CardHeader className="pb-6">
+                  <div className="flex items-center justify-between mb-6">
+                    <div className={`p-4 rounded-xl bg-gradient-to-r ${feature.gradient} text-white`}>
+                      <Icon className="w-8 h-8" />
                     </div>
-                    <Badge variant="secondary" className="text-xs">
+                    <Badge variant="secondary" className="text-sm px-3 py-1">
                       {feature.badge}
                     </Badge>
                   </div>
-                  <CardTitle className="feature-title group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                  <CardTitle className="feature-title group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-4">
                     {feature.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                <CardContent className="pt-0">
+                  <CardDescription className="text-slate-600 dark:text-gray-300 leading-relaxed">
                     {feature.description}
                   </CardDescription>
                 </CardContent>
@@ -137,14 +137,14 @@ export function Features() {
         </div>
 
         {/* Smart Contract Architecture */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-20 py-6">
           <Badge variant="outline" className="mb-4 px-4 py-2">
             Architecture
           </Badge>
           <h3 className="subsection-title mb-8 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent text-center">
             Smart Contract System
           </h3>
-          <p className="text-xl text-gray-600 dark:text-gray-300  text-center leading-relaxed">
+          <p className="text-xl text-slate-600 dark:text-gray-300  text-center leading-relaxed">
             6 interconnected contracts ensure security, scalability, and upgradeability
           </p>
         </div>
@@ -170,11 +170,11 @@ export function Features() {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+                  <p className="text-slate-700 dark:text-gray-300 mb-4 leading-relaxed">
                     {contract.description}
                   </p>
-                  <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                    <span className="font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-xs">
+                  <div className="flex items-center text-sm text-slate-500 dark:text-gray-400">
+                    <span className="font-mono bg-slate-100 dark:bg-gray-800 px-2 py-1 rounded text-xs">
                       {contract.address}
                     </span>
                   </div>
